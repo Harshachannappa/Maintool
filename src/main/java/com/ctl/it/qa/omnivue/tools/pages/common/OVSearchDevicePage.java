@@ -24,6 +24,11 @@ public class OVSearchDevicePage extends OmniVuePage {
 	@FindBy(xpath=".//a[text()='Contacts']")
 	public WebElementFacade tab_contact;
 	
+	@FindBy(xpath=".//a[text()='BAM Report']")
+	public WebElementFacade tab_bamreport;
+	
+	@FindBy(xpath = "//a[text()='Activations']")
+	public WebElementFacade tab_Activations;
 	
 	//olt
 	//ont
@@ -36,6 +41,8 @@ public class OVSearchDevicePage extends OmniVuePage {
 	
 	@FindBy(xpath=".//*[@id='left-content-tab']/div/div/div[1]/div/div/div[3]/div/div[4]/div/div[4]/table/tbody[1]/tr/td[2]")
 	public WebElementFacade tbx_deviceName;
+	
+	public static String allsearchXapath="header-label"; // Have to find alternate to findelements
 	
 	@Override
 	public WebElementFacade getUniqueElementInPage() {
@@ -60,8 +67,14 @@ public class OVSearchDevicePage extends OmniVuePage {
 						break;
 		case "Contacts": tab_contact.click();
 						Thread.sleep(2000);
-						break;		
-		}		
+						break;	
+						
+		case "BAM Report": tab_bamreport.click();
+						Thread.sleep(5000);
+						break;	
+		case "Activations": tab_Activations.click();
+							Thread.sleep(3000);
+		}				
 	}
 	
 	public void attribute_field() throws Exception {

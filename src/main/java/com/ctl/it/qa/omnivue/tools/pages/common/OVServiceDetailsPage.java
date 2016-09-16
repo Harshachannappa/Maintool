@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.ctl.it.qa.omnivue.tools.pages.OmniVuePage;
 
@@ -66,7 +68,43 @@ public class OVServiceDetailsPage extends OmniVuePage {
 	
 	//End of Contact validation
 		
-		
+	//Bam Table validation ----- 21/7/2016
+	
+	@FindBy(xpath="//*[@jqx-create='createBamlog']")
+	public WebElementFacade lbl_bamtable;
+	
+	//End of BAM table
+	
+	
+	
+	@FindBy(xpath=".//*[text()='No Associated Services to display']")
+	public WebElementFacade lbl_service_msg;
+	
+	
+	//QOS Template validation screen 
+	
+	@FindBy(xpath=".//*[@id='view1']/div/div/div[2]/div")
+	public WebElementFacade lbl_QOS_table;
+	
+	@FindBy(xpath=".//*[contains(@value,'Edit')]")
+	public WebElementFacade btn_QOS_edit;
+	
+	@FindBy(xpath=".//*[contains(@value,'Save')]")
+	public WebElementFacade btn_QOS_save;
+	
+	@FindBy(xpath=".//*[@ng-controller='viewQOSCtrl']/div/div[1]")
+	public WebElementFacade lbl_QOS_msg;
+	
+	//End of QOS Template 
+	
+	// Action Tab + Expand button
+	
+	@FindBy(xpath=".//*[@id='active:1610803390']")
+	public WebElementFacade btn_icon;
+	
+	@FindBy(xpath = ".//*[@id='data:1610803390']/td")
+	public WebElementFacade lbl_TableActivationTab;
+	
 	@Override
 	public WebElementFacade getUniqueElementInPage() {
 		
@@ -175,4 +213,95 @@ public class OVServiceDetailsPage extends OmniVuePage {
 				return false;
 				}
 		}
+		
+		public void validate_servicetab(){
+			if(lbl_service_msg.isVisible())
+			{
+				System.out.println("No service is present");
+			}
+			else throw new Error("Service is prsent");
+			
+		}
+		
+		public void bam_log_validation(){	//I am validating Bam table is present or not
+			if(lbl_bamtable.isDisplayed()){
+				System.out.println("BAM Table is present");
+			}
+			else throw new Error("BAM Table is not Present");
+		}
+		
+		public void Qos_template_validation(){
+			if(lbl_QOS_table.isDisplayed()){
+				System.out.println("Qos Table is Visible");
+			}
+			else throw new Error("Qos Table is not Present");
+			
+		}
+		
+		public void Qos_button_action(String actionkey) throws InterruptedException{
+			switch(actionkey){
+			case "Edit":btn_QOS_edit.click();					
+						break;				
+			case "Save":btn_QOS_save.click();						
+						break;
+			}		
+			Thread.sleep(5000);			
+			
+		}
+		
+		public void success_message_validation(String msg){
+			if(lbl_QOS_msg.isDisplayed()){
+				System.out.println(lbl_QOS_msg.getText());
+				switch(msg){
+				case "Success": if(lbl_QOS_msg.getText()=="xQOS Template has been updated with the name Template1");
+								System.out.println("Success");
+								break;
+				case "Error": if(lbl_QOS_msg.getText()=="xIncorrect partition value");
+								System.out.println("Error message");
+								break;
+				default: throw new Error("Invalid message is displayed");
+				}
+				
+			}
+	
+			
+		}
+		
+		public void click_expandicon(String tab) throws InterruptedException {
+			switch(tab){
+			case "Activations":btn_icon.click();
+								Thread.sleep(3000);
+			}
+			
+		}
+		
+		public void validateActivationTab(){
+			
+			WebDriverWait wait = new WebDriverWait(getDriver(),10);
+			
+			//wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("lbl_TableActivationTab")));
+			
+			wait.until(ExpectedConditions.visibilityOf(lbl_TableActivationTab));
+			
+			
+			//wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//a[text()='Activations']")));
+			
+			//String activationIdXpath = ".//*[@id='data:1610803390']/td";
+			//String activationId = find(By.xpath(activationIdXpath)).getText();
+
+			//boolean activationIdXpath = getDriver().findElement(By.xpath("lbl_TableActivationTab")).isDisplayed();
+			
+			boolean activationIdXpath = lbl_TableActivationTab.isDisplayed();
+			
+			if(activationIdXpath){
+				
+				System.out.println("Verification to activations tab is Passed");
+				
+			}else{
+				
+				System.out.println("Verification to activations tab is Failed");
+			}
+		}
+		
+		
 }
