@@ -55,27 +55,27 @@ public class OVSearchDevicePage extends OmniVuePage {
 		Thread.sleep(5000);
 		System.out.println("Executed the line"+tab);
 		
-		if(tab=="Services"){
+		if(tab.equals("Services")){
 			tab_services.click();
 			Thread.sleep(35000);
 		}
-		else if(tab=="CTag"){
+		else if(tab.equals("CTag")){
 			tab_ctag.click();
 			
 		}
-		else if(tab=="Orders"){
+		else if(tab.equals("Orders")){
 			tab_orders.click();
 			
 		}
-		else if(tab=="Contacts"){
+		else if(tab.equals("Contacts")){
 			 tab_contact.click();
 			
 		}
-		else if(tab=="BAM Report"){
+		else if(tab.equals("BAM Report")){
 			tab_bamreport.click();
 			
 		}
-		else if(tab=="Activations"){
+		else if(tab.equals("Activations")){
 			tab_Activations.click();
 			
 		}

@@ -101,9 +101,12 @@ public class UserSteps extends OmniVueSteps  {
 	}
 	
 	@Step
-	public void click_searchBtn(String search_button) throws InterruptedException {
-		actvtnpage.click_searchbtn(search_button);
+	public void click_searchBtn(String button) throws InterruptedException {
+		actvtnpage.click_searchbtn(button);
+		System.out.println("Second stage");
 	}
+	
+	
 	
 	@Step
 	public void select_viewBtn() {
@@ -257,7 +260,7 @@ public class UserSteps extends OmniVueSteps  {
 		assocservicespage.btn_ctagadd.click();
 		//String Alertmsg=assocservicespage.Alerttxt_txtbx.getText();
 		Thread.sleep(20000);
-		if(ctag_range=="Less than 1"){
+		if(ctag_range.equals("Less than 1")){
 			fill_fields_from("OVActivationPage","US31642-TC20884",ctag_range);
 			//get_container_from_xml("OVActivationPage","US31642-TC20884",ctag_range);
 			//enduser.get_container_from_xml("OVActivationPage","US31642-TC20884",ctag_range);
@@ -276,7 +279,7 @@ public class UserSteps extends OmniVueSteps  {
 			Thread.sleep(10000);
 		}
 		
-		else if(ctag_range=="Alphanumeric values"){
+		else if(ctag_range.equals("Alphanumeric values")){
 			fill_fields_from("OVActivationPage","US31642-TC20884",ctag_range);
 			//get_container_from_xml("OVActivationPage","US31642-TC20884",ctag_range);
 			Thread.sleep(1000);
@@ -292,7 +295,7 @@ public class UserSteps extends OmniVueSteps  {
 				Thread.sleep(10000);
 		}
 							
-		else if(ctag_range=="Greater than 4095"){
+		else if(ctag_range.equals("Greater than 4095")){
 			fill_fields_from("OVActivationPage","US31642-TC20884",ctag_range);
 			//get_container_from_xml("OVActivationPage","US31642-TC20884",ctag_range);
 			Thread.sleep(1000);
@@ -307,7 +310,7 @@ public class UserSteps extends OmniVueSteps  {
 			Thread.sleep(10000);
 		}
 		
-		else if(ctag_range=="Single Range 1-4095"){
+		else if(ctag_range.equals("Single Range 1-4095")){
 			fill_fields_from("OVActivationPage","US31642-TC20884",ctag_range);
 			//get_container_from_xml("OVActivationPage","US31642-TC20884",ctag_range);
 				Thread.sleep(1000);
@@ -315,7 +318,7 @@ public class UserSteps extends OmniVueSteps  {
 					Thread.sleep(10000);
 		}
 		
-		else if(ctag_range=="Multiple Range between 1-4095"){
+		else if(ctag_range.equals("Multiple Range between 1-4095")){
 			fill_fields_from("OVActivationPage","US31642-TC20884",ctag_range);
 			//get_container_from_xml("OVActivationPage","US31642-TC20884",ctag_range);
 			Thread.sleep(10000);
@@ -343,7 +346,7 @@ public class UserSteps extends OmniVueSteps  {
 			Thread.sleep(10000);
 		}
 		
-		else if(ctag_range=="Single Number Range"){
+		else if(ctag_range.equals("Single Number Range")){
 			fill_fields_from("OVActivationPage","US31642-TC20884",ctag_range);
 			//get_container_from_xml("OVActivationPage","US31642-TC20884",ctag_range);
 			Thread.sleep(1000);
@@ -351,7 +354,7 @@ public class UserSteps extends OmniVueSteps  {
 			Thread.sleep(10000);
 		}
 		
-		else if(ctag_range=="Modify the Ctag Range"){
+		else if(ctag_range.equals("Modify the Ctag Range")){
 			ctag_update("Multiple Range between 1-4095");
 			assocservicespage.editctag_fld1.clear();
 			assocservicespage.editctag_fld2.clear();
@@ -368,7 +371,7 @@ public class UserSteps extends OmniVueSteps  {
 			}						
 		}
 		
-		else if(ctag_range=="Overlapping the CTag range"){
+		else if(ctag_range.equals("Overlapping the CTag range")){
 			assocservicespage.btn_ctagadd.click();
 			Thread.sleep(5000);
 			fill_fields_from("OVActivationPage","US31642-TC20884",ctag_range);
@@ -442,7 +445,7 @@ public class UserSteps extends OmniVueSteps  {
 			for(int i=0;i<atributesOfPage.size();i++){
 				//System.out.println(atributesOfPage.get(i));
 				
-				if(atributesOfPage.get(i)=="Location Address*"){
+				if(atributesOfPage.get(i).equals("Location Address*")){
 					devcreatepage.btn_locationLookup.click();
 					String parentwin=devcreatepage.window_switch();
 					fill_fields_from("OVCreateDevicePage",testdata,"Locationdata");
@@ -451,7 +454,7 @@ public class UserSteps extends OmniVueSteps  {
 					devcreatepage.switch_win(parentwin);
 				}
 				
-				else if(atributesOfPage.get(i)=="Wire Center CLLI*"){
+				else if(atributesOfPage.get(i).equals("Wire Center CLLI*")){
 					devcreatepage.btn_wireclli.click();
 					Thread.sleep(5000);			
 					fill_fields_from("OVCreateDevicePage",testdata,"Wireddata");
@@ -461,28 +464,28 @@ public class UserSteps extends OmniVueSteps  {
 					Thread.sleep(2000);
 				}
 			
-				else if(atributesOfPage.get(i)=="Topology*"){
+				else if(atributesOfPage.get(i).equals("Topology*")){
 					devcreatepage.btn_Topologysearch.click();
 					fill_fields_from("OVCreateDevicePage",testdata,"Topologydata");	
 					devcreatepage.topology_fill();
 				}
 			
-				else if(atributesOfPage.get(i)=="Shared Flag*"){
+				else if(atributesOfPage.get(i).equals("Shared Flag*")){
 					devcreatepage.rdbtn_Shared.click();
 					Thread.sleep(3000);
 				}
 				
-				else if(atributesOfPage.get(i)=="Connector Type*"){
+				else if(atributesOfPage.get(i).equals("Connector Type*")){
 					devcreatepage.ddl_connectortype.selectByVisibleText("GPON");
 					Thread.sleep(3000);	
 				}
 				
-				else if(atributesOfPage.get(i)=="Splitter Number*"){
+				else if(atributesOfPage.get(i).equals("Splitter Number*")){
 					fill_fields_from("OVCreateDevicePage",testdata,"splitter");
 					Thread.sleep(3000);	
 				}
 		
-				else if(atributesOfPage.get(i)=="Device Name*"){
+				else if(atributesOfPage.get(i).equals("Device Name*")){
 					devcreatepage.btn_devicelookup.click();
 					Thread.sleep(2000);	
 					fill_fields_from("OVCreateDevicePage",testdata,"Deviceclli");
@@ -498,7 +501,7 @@ public class UserSteps extends OmniVueSteps  {
 					Thread.sleep(2000);
 				}
 			
-				else if(atributesOfPage.get(i)=="Location Role*"){
+				else if(atributesOfPage.get(i).equals("Location Role*")){
 					if(devcreatepage.rdbtn_addRange.isVisible()){
 						devcreatepage.rdbtn_addRange.click();
 						Thread.sleep(3000);
@@ -511,7 +514,7 @@ public class UserSteps extends OmniVueSteps  {
 						break;
 				}					
 		
-				else if(atributesOfPage.get(i)=="New Construction Ind*"){
+				else if(atributesOfPage.get(i).equals("New Construction Ind*")){
 					devcreatepage.ddl_NewConstructionIndicator.selectByVisibleText("Yes");
 					break;
 				}	
@@ -583,11 +586,11 @@ public class UserSteps extends OmniVueSteps  {
 			actvtnpage.ddl_createType.selectByVisibleText(type);
 			Thread.sleep(1000);
 			Thread.sleep(1000);
-			if(type=="Inventory"){
+			if(type.equals("Inventory")){
 				actvtnpage.ddl_CreateinvntryType.selectByVisibleText(subtype);
 				
 			}
-			else if(type=="Network Build"){
+			else if(type.equals("Network Build")){
 				actvtnpage.ddl_CreateNetworkType.selectByVisibleText(subtype);
 			}			
 			Thread.sleep(1000);
@@ -604,7 +607,7 @@ public class UserSteps extends OmniVueSteps  {
 		actvtnpage.selecttech(techType);
 		//int Validation=1;
 		//actvtnpage.ddl_techType.selectByVisibleText(techType);
-		if(techType=="PASSIVE"){
+		if(techType.equals("PASSIVE")){
 			//String[] actualDeviceType = {"","Fiber Distribution Hub","Fiber Distribution Panel","Fiber Multiport Service Terminal","Fiber Splitter"};
 			WebElement dropdown = actvtnpage.ddl_devType;
 			//ArrayList<String> ExpDeviceType = null;
@@ -623,7 +626,7 @@ public class UserSteps extends OmniVueSteps  {
 				    	       }
 				 
 			 		} */
-				 if(options.get(j).getText()=="" || options.get(j).getText()=="Fiber Distribution Hub" || options.get(j).getText()=="Fiber Distribution Panel" || options.get(j).getText()=="Fiber Multiport Service Terminal" || options.get(j).getText()=="Fiber Splitter"){
+				 if(options.get(j).getText().equals("") || options.get(j).getText().equals("Fiber Distribution Hub") || options.get(j).getText().equals("Fiber Distribution Panel") || options.get(j).getText().equals("Fiber Multiport Service Terminal") || options.get(j).getText().equals("Fiber Splitter")){
 				 
 								 System.out.println(options.get(j).getText()+"Is present");
 							 }
@@ -705,14 +708,14 @@ public class UserSteps extends OmniVueSteps  {
 		//System.out.println(id);
 	for(int i=0;i<attributeList.size();i++){
 		System.out.println(atributesOfPage.get(i));
-		if(attributes=="Passive"){
-			if(atributesOfPage.get(i)=="Is Diverse" || atributesOfPage.get(i)=="Affiliate Owner" || atributesOfPage.get(i)=="Monitoring Type" || atributesOfPage.get(i)=="Management VLAN" || atributesOfPage.get(i)=="SNMP Port Number" || atributesOfPage.get(i)=="SNMP Version" || atributesOfPage.get(i)=="SNMP User" || atributesOfPage.get(i)=="Management IP Subnet Mask" || atributesOfPage.get(i)=="RO Community String"){
+		if(attributes.equals("Passive")){
+			if(atributesOfPage.get(i).equals("Is Diverse") || atributesOfPage.get(i).equals("Affiliate Owner") || atributesOfPage.get(i).equals("Monitoring Type") || atributesOfPage.get(i).equals("Management VLAN") || atributesOfPage.get(i).equals("SNMP Port Number") || atributesOfPage.get(i).equals("SNMP Version") || atributesOfPage.get(i).equals("SNMP User") || atributesOfPage.get(i).equals("Management IP Subnet Mask") || atributesOfPage.get(i).equals("RO Community String")){
 				Validation=0; output=atributesOfPage.get(i); break;
 			}		
 		}
 		
-		else if(attributes=="Location"){
-		if(atributesOfPage.get(i)=="Is Diverse" || atributesOfPage.get(i)=="Affiliate Owner" || atributesOfPage.get(i)=="Monitoring Type" || atributesOfPage.get(i)=="Management VLAN" || atributesOfPage.get(i)=="SNMP Port Number" || atributesOfPage.get(i)=="SNMP Version" || atributesOfPage.get(i)=="" || atributesOfPage.get(i)=="Management IP Subnet Mask" || atributesOfPage.get(i)=="RO Community String"){
+		else if(attributes.equals("Location")){ 	// Check this line again 20/9/2016******************************************************
+		if(atributesOfPage.get(i).equals("Is Diverse") || atributesOfPage.get(i).equals("Affiliate Owner") || atributesOfPage.get(i).equals("Monitoring Type") || atributesOfPage.get(i).equals("Management VLAN") || atributesOfPage.get(i).equals("SNMP Port Number") || atributesOfPage.get(i).equals("SNMP Version") || atributesOfPage.get(i).equals("") || atributesOfPage.get(i).equals("Management IP Subnet Mask") || atributesOfPage.get(i).equals("RO Community String")){
 			Validation=0; output=atributesOfPage.get(i); break;
 										}
 		}

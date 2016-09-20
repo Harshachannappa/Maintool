@@ -239,10 +239,10 @@ public class OVServiceDetailsPage extends OmniVuePage {
 		}
 		
 		public void Qos_button_action(String actionkey) throws InterruptedException{
-			if(actionkey=="Edit"){
+			if(actionkey.equals("Edit")){
 				btn_QOS_edit.click();
 			}
-			else if(actionkey=="Save"){
+			else if(actionkey.equals("Save")){
 				btn_QOS_save.click();
 			}
 						
@@ -253,12 +253,12 @@ public class OVServiceDetailsPage extends OmniVuePage {
 		public void success_message_validation(String msg){
 			if(lbl_QOS_msg.isDisplayed()){
 				System.out.println(lbl_QOS_msg.getText());
-				if(msg=="Success"){
-					 if(lbl_QOS_msg.getText()=="xQOS Template has been updated with the name Template1");
+				if(msg.equals("Success")){
+					 if(lbl_QOS_msg.getText().equals("xQOS Template has been updated with the name Template1"));
 						System.out.println("Success");
 				}
-				else if(msg=="Error"){
-					if(lbl_QOS_msg.getText()=="xIncorrect partition value");
+				else if(msg.equals("Error")){
+					if(lbl_QOS_msg.getText().equals("xIncorrect partition value"));
 					System.out.println("Error message");
 				}
 				else throw new Error("Invalid message is displayed");		
@@ -266,7 +266,7 @@ public class OVServiceDetailsPage extends OmniVuePage {
 		}
 		
 		public void click_expandicon(String tab) throws InterruptedException {
-			if(tab=="Activations"){
+			if(tab.equals("Activations")){
 				btn_icon.click();
 			}
 			

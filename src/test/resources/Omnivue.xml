@@ -328,7 +328,7 @@
           			<container name="Devicedata">
           		 		<field name="tbx_DeviceCLLI" value="wait-1:TESTYYYY" type="mandatory"></field>
           		 		<field name="tbx_Devicedesignator" value="wait-1:01A" type="mandatory"></field>           	 	
-	              	 	<field name="tbx_relayID" value="wait-1:0.0001304012" type="mandatory"></field>
+	              	 	<field name="tbx_relayID" value="DateTime:0.2340006" type="mandatory"></field>
 	              	 	<field name="ddl_Aerialrburied" value="wait-1:Aerial" type="mandatory"></field>
             		</container>
             		<container name="Topologydata">
@@ -345,7 +345,7 @@
           			<container name="Devicedata">
           		 		<field name="tbx_DeviceCLLI" value="wait-1:TESTYYYY" type="mandatory"></field>
           		 		<field name="tbx_Devicedesignator" value="wait-1:01A" type="mandatory"></field>           	 	
-	              	 	<field name="tbx_relayID" value="wait-1:0.0030145032" type="mandatory"></field>
+	              	 	<field name="tbx_relayID" value="DateTime:0.2340007" type="mandatory"></field>
 	              	 	<field name="ddl_IsDiversed" value="wait-1:No" type="mandatory"></field>
 	              	 	<field name="ddl_affiliate_owner" value="wait-1:LOCAL" type="mandatory"></field>	              	 	
 	              	 	<field name="ddl_nosacer" value="wait-1:No" type="mandatory"></field>

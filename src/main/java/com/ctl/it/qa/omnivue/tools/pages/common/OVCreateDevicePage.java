@@ -429,35 +429,23 @@ public class OVCreateDevicePage extends OmniVuePage {
 		for(int j=0;j<acutalList.size();j++){
 			atributesOfPage.add(j, acutalList.get(j).getText());
 		}
-		if(devtype=="PASSIVE"){
+		if(devtype.equals("PASSIVE")){
 			for(int j=0;j<atributesOfPage.size();){
 				System.out.println(atributesOfPage.get(j));
-				switch(atributesOfPage.get(j)){
-						case "Is Diverse": return false; 													
-						case "Affiliate Owner*": return false; 
-						case "Monitoring Type": return false;
-						case "Management VLAN": return false; 
-						case "SNMP Port Number": return false; 
-						case "SNMP Version": return false; 
-						case "SNMP User": return false; 
-						case "Management IP Subnet Mask": return false; 
-						case "RO Community String": return false; 
-						default: j++;
-				}		
+				if(atributesOfPage.get(j).equals("Is Diverse") || atributesOfPage.get(j).equals("Affiliate Owner*") || atributesOfPage.get(j).equals("Monitoring Type") || atributesOfPage.get(j).equals("Management VLAN") || atributesOfPage.get(j).equals("SNMP Port Number") || atributesOfPage.get(j).equals("SNMP Version") || atributesOfPage.get(j).equals("SNMP User") || atributesOfPage.get(j).equals("Management IP Subnet Mask") || atributesOfPage.get(j).equals("RO Community String")){
+					return false;
+				}
+					j++;					
 			}
 		}
 	
-		else if(devtype=="ONT"){
+		else if(devtype.equals("ONT")){
 			for(int j=0;j<atributesOfPage.size();){
 				System.out.println(atributesOfPage.get(j));
-				switch(atributesOfPage.get(j)){
-							case "Power Supply*": return false; 
-							case "Fiber Distribution Node*": return false; 
-							case "Fiber Distribution Node-Port*": return false; 
-							case "Fiber Cable Name*": return false; 
-							case "Fiber Strand ID*": return false; 														
-							default: j++;
+				if(atributesOfPage.get(j).equals("Power Supply*") || atributesOfPage.get(j).equals("Fiber Distribution Node*") || atributesOfPage.get(j).equals("Fiber Distribution Node-Port*") || atributesOfPage.get(j).equals("Fiber Cable Name*") || atributesOfPage.get(j).equals("Fiber Strand ID*") ){
+					return false;
 				}
+					j++;				
 			}
 		
 		
@@ -508,7 +496,7 @@ public class OVCreateDevicePage extends OmniVuePage {
 				System.out.println(radioButton+"..............");
 				Thread.sleep(3000);
 		
-				if(radioButton=="PASSIVE"){
+				if(radioButton.equals("PASSIVE")){
 					if(rbn_passive.isSelected())
 					{
 						isRadioButtonSelected=true;
@@ -520,7 +508,7 @@ public class OVCreateDevicePage extends OmniVuePage {
 					isRadioButtonSelected=true;
 					System.out.println(radioButton+"is seclected");
 				}
-				else if(radioButton=="GPON"){
+				else if(radioButton.equals("GPON")){
 					if(rbn_Gpon.isSelected())
 					{
 						isRadioButtonSelected=true;
@@ -675,7 +663,7 @@ public class OVCreateDevicePage extends OmniVuePage {
 	
 	public void gpon_ntwdevice_select(String devicetype){
 		try {	
-			if(devicetype=="ONT"){
+			if(devicetype.equals("ONT")){
 				btn_gpon_ONT.click();
 				Thread.sleep(2000);	
 			}			

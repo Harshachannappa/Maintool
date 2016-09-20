@@ -379,19 +379,22 @@ public class OVActivationPage extends OmniVuePage {
 	}
 	
 	public void click_searchbtn(String search_button) throws InterruptedException {
-		if(search_button=="Orders"){
-			btn_ordersearch.click();					
-			
-		}
-		else if(search_button=="Inventory"){
+		System.out.println("Third stage");
+		//btn_inventorysearch.click();
+		if(search_button.equals("Inventory")){
 			btn_inventorysearch.click();					
 		
 		}
-		else if(search_button=="Network"){
-			btn_networksearch.click();						
+		else if(search_button.equals("Orders")){
+		btn_ordersearch.click();					
 			
 		}
-		else if(search_button=="Task"){
+		 
+		else if(search_button.equals("Network")){
+			btn_networksearch.click();						
+		
+		}
+		else if(search_button.equals("Task")){
 			btn_tasksearch.click();						
 			
 		}
@@ -400,6 +403,7 @@ public class OVActivationPage extends OmniVuePage {
 		Thread.sleep(15000);
 		//btn_search.click();
 	}
+	
 	
 	public void click_viewbtn() {
 		btn_view.click();		
@@ -441,13 +445,13 @@ public class OVActivationPage extends OmniVuePage {
 
 	
 	public void click_Technologytype(String tech){       //Selecting Radio Button in Create Form for Inventory Type
-		if(tech=="Role"){
+		if(tech.equals("Role")){
 			rdbtn_role.click();
 		}
-		else if(tech=="Technology"){
+		else if(tech.equals("Technology")){
 			rdbtn_tech.click();
 		}
-		else if(tech=="All"){
+		else if(tech.equals("All")){
 			rdbtn_all.click();
 		}
 	}
@@ -473,12 +477,12 @@ public class OVActivationPage extends OmniVuePage {
 	}
 	
 	public void click_launch_create_form(String create_button) throws InterruptedException {							//Shiva
-		if(create_button=="DeviceCreate"){
+		if(create_button.equals("DeviceCreate")){
 			WebDriverWait wait = new WebDriverWait(getDriver(),30);
 			wait.until(ExpectedConditions.elementToBeClickable(btn_createdevice));
 			btn_createdevice.click();
 		}
-		else if(create_button=="ServiveCreate"){
+		else if(create_button.equals("ServiveCreate")){
 			WebDriverWait waita = new WebDriverWait(getDriver(),30);
 			 waita.until(ExpectedConditions.elementToBeClickable(btn_createservice));
 			 btn_createservice.click();	
