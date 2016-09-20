@@ -379,16 +379,24 @@ public class OVActivationPage extends OmniVuePage {
 	}
 	
 	public void click_searchbtn(String search_button) throws InterruptedException {
-		switch(search_button){
-		case "Orders":btn_ordersearch.click();						
-						break;
-		case "Inventory": btn_inventorysearch.click();						
-						break;
-		case "Network": btn_networksearch.click();
-						break;
-		case "Task": btn_tasksearch.click();
-						break;		
+		if(search_button=="Orders"){
+			btn_ordersearch.click();					
+			
 		}
+		else if(search_button=="Inventory"){
+			btn_inventorysearch.click();					
+		
+		}
+		else if(search_button=="Network"){
+			btn_networksearch.click();						
+			
+		}
+		else if(search_button=="Task"){
+			btn_tasksearch.click();						
+			
+		}
+		
+
 		Thread.sleep(15000);
 		//btn_search.click();
 	}
@@ -433,15 +441,16 @@ public class OVActivationPage extends OmniVuePage {
 
 	
 	public void click_Technologytype(String tech){       //Selecting Radio Button in Create Form for Inventory Type
-		switch(tech){
-					case "Role": rdbtn_role.click();
-									break;
-					case "Technology": rdbtn_tech.click();
-									break;
-					case "All": rdbtn_all.click();
-								break;
-					}		
-				}
+		if(tech=="Role"){
+			rdbtn_role.click();
+		}
+		else if(tech=="Technology"){
+			rdbtn_tech.click();
+		}
+		else if(tech=="All"){
+			rdbtn_all.click();
+		}
+	}
 	
 	public void selecttech(String techType){   // Selecting the Technology in Create Form for Inventory Type
 		ddl_techType.selectByVisibleText(techType);
@@ -464,17 +473,18 @@ public class OVActivationPage extends OmniVuePage {
 	}
 	
 	public void click_launch_create_form(String create_button) throws InterruptedException {							//Shiva
-		switch(create_button){
-		
-		case "DeviceCreate":WebDriverWait wait = new WebDriverWait(getDriver(),30);
-							wait.until(ExpectedConditions.elementToBeClickable(btn_createdevice));
-							btn_createdevice.click();							
-						break;
-		case "ServiveCreate":WebDriverWait waita = new WebDriverWait(getDriver(),30);
-							 waita.until(ExpectedConditions.elementToBeClickable(btn_createservice));
-							 btn_createservice.click();							 
-						break;
+		if(create_button=="DeviceCreate"){
+			WebDriverWait wait = new WebDriverWait(getDriver(),30);
+			wait.until(ExpectedConditions.elementToBeClickable(btn_createdevice));
+			btn_createdevice.click();
 		}
+		else if(create_button=="ServiveCreate"){
+			WebDriverWait waita = new WebDriverWait(getDriver(),30);
+			 waita.until(ExpectedConditions.elementToBeClickable(btn_createservice));
+			 btn_createservice.click();	
+		}
+		
+		
 		Thread.sleep(5000);
 		//btn_search.click();
 	}

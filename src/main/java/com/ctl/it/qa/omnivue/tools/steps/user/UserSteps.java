@@ -257,144 +257,140 @@ public class UserSteps extends OmniVueSteps  {
 		assocservicespage.btn_ctagadd.click();
 		//String Alertmsg=assocservicespage.Alerttxt_txtbx.getText();
 		Thread.sleep(20000);
-		switch(ctag_range){
-		
-		case "Less than 1": fill_fields_from("OVActivationPage","US31642-TC20884",ctag_range);
-							//get_container_from_xml("OVActivationPage","US31642-TC20884",ctag_range);
-							//enduser.get_container_from_xml("OVActivationPage","US31642-TC20884",ctag_range);
-							//System.out.println(enduser.get_data_for_page(actvtnpage).getContainer(ctag_range));
-			
+		if(ctag_range=="Less than 1"){
+			fill_fields_from("OVActivationPage","US31642-TC20884",ctag_range);
+			//get_container_from_xml("OVActivationPage","US31642-TC20884",ctag_range);
+			//enduser.get_container_from_xml("OVActivationPage","US31642-TC20884",ctag_range);
+			//System.out.println(enduser.get_data_for_page(actvtnpage).getContainer(ctag_range));
+
 			//ctagtxt_field1.sendKeys("0");
-							//ctagtxt_field2.sendKeys("1");
-							Thread.sleep(1000);
-							assocservicespage.btn_ctagsave.click();/// *****************  Change this condition to some place else***************
-							if(assocservicespage.lbl_alertmsgctag.getText().contains("Start and End values should be in range from 1 to 4095."))
-							{
-								System.out.println("Enter valid text between range 1 to 4095");
-								assocservicespage.btn_alertmsgctag.click();
-							}
-							//assocservicespage.btn_ctagcancel.click();
-							Thread.sleep(10000);
-							break;
-							
-		case "Alphanumeric values": fill_fields_from("OVActivationPage","US31642-TC20884",ctag_range);
-									//get_container_from_xml("OVActivationPage","US31642-TC20884",ctag_range);
-									Thread.sleep(1000);
-									assocservicespage.btn_ctagsave.click();
-									 Thread.sleep(1000);/// *****************  Change this condition to some place else***************
-									 if(assocservicespage.lbl_alertmsgctag.getText().contains("Please enter a numeric value."))
-										{
-											System.out.println("Enter valid text between range 1 to 4095");
-											Thread.sleep(10000);
-											assocservicespage.btn_alertmsgctag.click();
-										}
-										//assocservicespage.btn_ctagcancel.click();
-										Thread.sleep(10000);
-										break;
-										
-		case "Greater than 4095": fill_fields_from("OVActivationPage","US31642-TC20884",ctag_range);
-									//get_container_from_xml("OVActivationPage","US31642-TC20884",ctag_range);
-									Thread.sleep(1000);
-									assocservicespage.btn_ctagsave.click();/// *****************  Change this condition to some place else***************
-									if(assocservicespage.lbl_alertmsgctag.getText().contains("Start and End values should be in range from 1 to 4095."))
-									{
-										System.out.println("Enter valid text between range 1 to 4095");
-										Thread.sleep(10000);
-										assocservicespage.btn_alertmsgctag.click();
-									}
-									//assocservicespage.btn_ctagcancel.click();
-									Thread.sleep(10000);
-									break;
-							
-		case "Single Range 1-4095": fill_fields_from("OVActivationPage","US31642-TC20884",ctag_range);
-									//get_container_from_xml("OVActivationPage","US31642-TC20884",ctag_range);
-							Thread.sleep(1000);
-							assocservicespage.btn_ctagsave.click();
-							Thread.sleep(10000);
-							//Revertback_name_Ctag();
-							//Thread.sleep(10000);
-							break;	
-							
-		case "Multiple Range between 1-4095": 	fill_fields_from("OVActivationPage","US31642-TC20884",ctag_range);
-							//get_container_from_xml("OVActivationPage","US31642-TC20884",ctag_range);
-							Thread.sleep(10000);
-							assocservicespage.btn_ctagsave.click();
-							Thread.sleep(5000);
-							/*searchdevicepage.tab_orders.click();
-							Thread.sleep(3000);
-							searchdevicepage.tab_ctag.click();
-							Thread.sleep(3000);*/
-							assocservicespage.btn_ctagadd.click();
-							Thread.sleep(10000);
-							fill_fields_from("OVActivationPage","US31642-TC20884","Multiple Range between 1-4095 secound range");
-							Thread.sleep(10000);
-							assocservicespage.btn_ctagsave.click();
-							Thread.sleep(5000);
-							/*searchdevicepage.tab_orders.click();
-							Thread.sleep(3000);
-							searchdevicepage.tab_ctag.click();
-							Thread.sleep(3000);*/
-							assocservicespage.btn_ctagadd.click();
-							Thread.sleep(10000);
-							fill_fields_from("OVActivationPage","US31642-TC20884","Multiple Range between 1-4095 third range");
-							Thread.sleep(1000);
-							assocservicespage.btn_ctagsave.click();
-							Thread.sleep(10000);
-							break;
+			//ctagtxt_field2.sendKeys("1");
+			Thread.sleep(1000);
+			assocservicespage.btn_ctagsave.click();/// *****************  Change this condition to some place else***************
+			if(assocservicespage.lbl_alertmsgctag.getText().contains("Start and End values should be in range from 1 to 4095."))
+			{
+				System.out.println("Enter valid text between range 1 to 4095");
+				assocservicespage.btn_alertmsgctag.click();
+			}
+			//assocservicespage.btn_ctagcancel.click();
+			Thread.sleep(10000);
+		}
 		
-		case "Single Number Range": fill_fields_from("OVActivationPage","US31642-TC20884",ctag_range);
-									//get_container_from_xml("OVActivationPage","US31642-TC20884",ctag_range);
-									Thread.sleep(1000);
-									assocservicespage.btn_ctagsave.click();
-									Thread.sleep(10000);
-									//Revertback_name_Ctag();
-									//Thread.sleep(10000);
-									break;
+		else if(ctag_range=="Alphanumeric values"){
+			fill_fields_from("OVActivationPage","US31642-TC20884",ctag_range);
+			//get_container_from_xml("OVActivationPage","US31642-TC20884",ctag_range);
+			Thread.sleep(1000);
+			assocservicespage.btn_ctagsave.click();
+			 Thread.sleep(1000);/// *****************  Change this condition to some place else***************
+			 if(assocservicespage.lbl_alertmsgctag.getText().contains("Please enter a numeric value."))
+				{
+					System.out.println("Enter valid text between range 1 to 4095");
+					Thread.sleep(10000);
+					assocservicespage.btn_alertmsgctag.click();
+				}
+				//assocservicespage.btn_ctagcancel.click();
+				Thread.sleep(10000);
+		}
 							
-		case "Modify the Ctag Range":ctag_update("Multiple Range between 1-4095");
-							assocservicespage.editctag_fld1.clear();
-							assocservicespage.editctag_fld2.clear();
-							Thread.sleep(1000);
-							fill_fields_from("OVActivationPage","US31642-TC20884",ctag_range);
-							//get_container_from_xml("OVActivationPage","US31642-TC20884",ctag_range);
-							Thread.sleep(1000);
-							assocservicespage.btn_ctagsave.click();
-							Thread.sleep(10000);
-							if(assocservicespage.lbl_succmsgctag.getText().contains("Pool range(s) created/updated successfully.")){
-								System.out.println("Successfully validated modified Ctag");
-								Thread.sleep(10000);
-								assocservicespage.btn_succmsgctag.click();
-							}												
-							//Revertback_name_Ctag();
-							//Thread.sleep(10000);
-							break;
-							
-		case "Overlapping the CTag range": //ctag_update("Multiple Range between 1-4095");  //Check the values already present & modify
-							assocservicespage.btn_ctagadd.click();
-							Thread.sleep(5000);
-							fill_fields_from("OVActivationPage","US31642-TC20884",ctag_range);
-							//get_container_from_xml("OVActivationPage","US31642-TC20884",ctag_range);
-							Thread.sleep(1000);
-							assocservicespage.btn_ctagsave.click();
+		else if(ctag_range=="Greater than 4095"){
+			fill_fields_from("OVActivationPage","US31642-TC20884",ctag_range);
+			//get_container_from_xml("OVActivationPage","US31642-TC20884",ctag_range);
+			Thread.sleep(1000);
+			assocservicespage.btn_ctagsave.click();/// *****************  Change this condition to some place else***************
+			if(assocservicespage.lbl_alertmsgctag.getText().contains("Start and End values should be in range from 1 to 4095."))
+			{
+				System.out.println("Enter valid text between range 1 to 4095");
+				Thread.sleep(10000);
+				assocservicespage.btn_alertmsgctag.click();
+			}
+			//assocservicespage.btn_ctagcancel.click();
+			Thread.sleep(10000);
+		}
+		
+		else if(ctag_range=="Single Range 1-4095"){
+			fill_fields_from("OVActivationPage","US31642-TC20884",ctag_range);
+			//get_container_from_xml("OVActivationPage","US31642-TC20884",ctag_range);
+				Thread.sleep(1000);
+					assocservicespage.btn_ctagsave.click();
+					Thread.sleep(10000);
+		}
+		
+		else if(ctag_range=="Multiple Range between 1-4095"){
+			fill_fields_from("OVActivationPage","US31642-TC20884",ctag_range);
+			//get_container_from_xml("OVActivationPage","US31642-TC20884",ctag_range);
+			Thread.sleep(10000);
+			assocservicespage.btn_ctagsave.click();
+			Thread.sleep(5000);
+			/*searchdevicepage.tab_orders.click();
+			Thread.sleep(3000);
+			searchdevicepage.tab_ctag.click();
+			Thread.sleep(3000);*/
+			assocservicespage.btn_ctagadd.click();
+			Thread.sleep(10000);
+			fill_fields_from("OVActivationPage","US31642-TC20884","Multiple Range between 1-4095 secound range");
+			Thread.sleep(10000);
+			assocservicespage.btn_ctagsave.click();
+			Thread.sleep(5000);
+			/*searchdevicepage.tab_orders.click();
+			Thread.sleep(3000);
+			searchdevicepage.tab_ctag.click();
+			Thread.sleep(3000);*/
+			assocservicespage.btn_ctagadd.click();
+			Thread.sleep(10000);
+			fill_fields_from("OVActivationPage","US31642-TC20884","Multiple Range between 1-4095 third range");
+			Thread.sleep(1000);
+			assocservicespage.btn_ctagsave.click();
+			Thread.sleep(10000);
+		}
+		
+		else if(ctag_range=="Single Number Range"){
+			fill_fields_from("OVActivationPage","US31642-TC20884",ctag_range);
+			//get_container_from_xml("OVActivationPage","US31642-TC20884",ctag_range);
+			Thread.sleep(1000);
+			assocservicespage.btn_ctagsave.click();
+			Thread.sleep(10000);
+		}
+		
+		else if(ctag_range=="Modify the Ctag Range"){
+			ctag_update("Multiple Range between 1-4095");
+			assocservicespage.editctag_fld1.clear();
+			assocservicespage.editctag_fld2.clear();
+			Thread.sleep(1000);
+			fill_fields_from("OVActivationPage","US31642-TC20884",ctag_range);
+			//get_container_from_xml("OVActivationPage","US31642-TC20884",ctag_range);
+			Thread.sleep(1000);
+			assocservicespage.btn_ctagsave.click();
+			Thread.sleep(10000);
+			if(assocservicespage.lbl_succmsgctag.getText().contains("Pool range(s) created/updated successfully.")){
+				System.out.println("Successfully validated modified Ctag");
+				Thread.sleep(10000);
+				assocservicespage.btn_succmsgctag.click();
+			}						
+		}
+		
+		else if(ctag_range=="Overlapping the CTag range"){
+			assocservicespage.btn_ctagadd.click();
+			Thread.sleep(5000);
+			fill_fields_from("OVActivationPage","US31642-TC20884",ctag_range);
+			//get_container_from_xml("OVActivationPage","US31642-TC20884",ctag_range);
+			Thread.sleep(1000);
+			assocservicespage.btn_ctagsave.click();
 /*							if(assocservicespage.Alerttxt_txtbx.getText()=="Start value or End value is overlapping with an existing pool range.")
-							{
-								System.out.println("Overlapping CTag Range");
-							}
-							assocservicespage.btn_ctagcancel.click();*/
-							if(assocservicespage.lbl_alertmsgctag.getText().contains(""))
-							{
-								System.out.println("Enter valid text between range 1 to 4095");
-								Thread.sleep(10000);
-								assocservicespage.btn_alertmsgctag.click();
-							}
-							//assocservicespage.btn_ctagcancel.click();
-							Thread.sleep(10000);
-							break;
-						 //Thread.sleep(5000);
-						// Revertback_name_Ctag();
-							//Thread.sleep(10000);
-							//break;
-		}		
+			{
+				System.out.println("Overlapping CTag Range");
+			}
+			assocservicespage.btn_ctagcancel.click();*/
+			if(assocservicespage.lbl_alertmsgctag.getText().contains(""))
+			{
+				System.out.println("Enter valid text between range 1 to 4095");
+				Thread.sleep(10000);
+				assocservicespage.btn_alertmsgctag.click();
+			}
+			//assocservicespage.btn_ctagcancel.click();
+			Thread.sleep(10000);
+		}	
+		
+				
 	}
 
 	@Step
@@ -445,77 +441,81 @@ public class UserSteps extends OmniVueSteps  {
 			//for(int i=0;i<acutalList.size();i++){
 			for(int i=0;i<atributesOfPage.size();i++){
 				//System.out.println(atributesOfPage.get(i));
-			switch(atributesOfPage.get(i)) {
 				
-			case "Location Address*": devcreatepage.btn_locationLookup.click();
-									String parentwin=devcreatepage.window_switch();
-									fill_fields_from("OVCreateDevicePage",testdata,"Locationdata");
-									devcreatepage.btn_lookUp.click();//Rework
-									Thread.sleep(5000);
-									devcreatepage.switch_win(parentwin);
-									break;
-									//End of Location clli
+				if(atributesOfPage.get(i)=="Location Address*"){
+					devcreatepage.btn_locationLookup.click();
+					String parentwin=devcreatepage.window_switch();
+					fill_fields_from("OVCreateDevicePage",testdata,"Locationdata");
+					devcreatepage.btn_lookUp.click();//Rework
+					Thread.sleep(5000);
+					devcreatepage.switch_win(parentwin);
+				}
+				
+				else if(atributesOfPage.get(i)=="Wire Center CLLI*"){
+					devcreatepage.btn_wireclli.click();
+					Thread.sleep(5000);			
+					fill_fields_from("OVCreateDevicePage",testdata,"Wireddata");
+					devcreatepage.btn_wiredlookUp.click();//Rework
+					Thread.sleep(5000);
+					devcreatepage.lnk_addlcn.click();//Rework
+					Thread.sleep(2000);
+				}
 			
-			case "Wire Center CLLI*": devcreatepage.btn_wireclli.click();
-									Thread.sleep(5000);			
-									fill_fields_from("OVCreateDevicePage",testdata,"Wireddata");
-									devcreatepage.btn_wiredlookUp.click();//Rework
-									Thread.sleep(5000);
-									devcreatepage.lnk_addlcn.click();//Rework
-									Thread.sleep(2000);
-									break;
-									//End of wire CLLI
-									
-			case "Topology*": devcreatepage.btn_Topologysearch.click();
-								fill_fields_from("OVCreateDevicePage",testdata,"Topologydata");	
-								devcreatepage.topology_fill();
-								break;
+				else if(atributesOfPage.get(i)=="Topology*"){
+					devcreatepage.btn_Topologysearch.click();
+					fill_fields_from("OVCreateDevicePage",testdata,"Topologydata");	
+					devcreatepage.topology_fill();
+				}
 			
-			case "Shared Flag*": devcreatepage.rdbtn_Shared.click();
-								Thread.sleep(3000);	
-								break;	
-								
-			case "Connector Type*": devcreatepage.ddl_connectortype.selectByVisibleText("GPON");
-									Thread.sleep(3000);	
-									break;
-									
-			case "Splitter Number*": fill_fields_from("OVCreateDevicePage",testdata,"splitter");
-									Thread.sleep(3000);	
-									break;
-			//case "Name*": //fill_fields_from("OVCreateDevicePage",testdata,"namefield");
-								//actvtnpage.tbx_logportname.sendKeys("logical01");
-									//Thread.sleep(2000);	
-									//break;
-			case "Device Name*": devcreatepage.btn_devicelookup.click();
-								Thread.sleep(2000);	
-								fill_fields_from("OVCreateDevicePage",testdata,"Deviceclli");
-								//actvtnpage.tbx_devicelookup.sendKeys("TESTYYYYT01");
-								Thread.sleep(3000);
-								devcreatepage.btn_lookuplogicalfrm.click();
-								Thread.sleep(10000);
-								devcreatepage.btn_lookuplogicalport.click();
-								Thread.sleep(2000);
-								devcreatepage.btn_lookuplogicalport_lookup.click();
-								Thread.sleep(2000);
-								devcreatepage.lbl_selctlogicalport_lookup.click();	
-								Thread.sleep(2000);
-								break;
-								
-			case "Location Role*": if(devcreatepage.rdbtn_addRange.isVisible()){
-										devcreatepage.rdbtn_addRange.click();
-										Thread.sleep(3000);
-										}
-									for(int j=1;j<=3;j++){
-										devcreatepage.ddl_locationRole.selectByIndex(j);
-										Thread.sleep(3000);
-										}
-									System.out.println("Done with filling location role");
-										break;
-										
-			case "New Construction Ind*": devcreatepage.ddl_NewConstructionIndicator.selectByVisibleText("Yes");
-										break;
-				default:break;
-			}
+				else if(atributesOfPage.get(i)=="Shared Flag*"){
+					devcreatepage.rdbtn_Shared.click();
+					Thread.sleep(3000);
+				}
+				
+				else if(atributesOfPage.get(i)=="Connector Type*"){
+					devcreatepage.ddl_connectortype.selectByVisibleText("GPON");
+					Thread.sleep(3000);	
+				}
+				
+				else if(atributesOfPage.get(i)=="Splitter Number*"){
+					fill_fields_from("OVCreateDevicePage",testdata,"splitter");
+					Thread.sleep(3000);	
+				}
+		
+				else if(atributesOfPage.get(i)=="Device Name*"){
+					devcreatepage.btn_devicelookup.click();
+					Thread.sleep(2000);	
+					fill_fields_from("OVCreateDevicePage",testdata,"Deviceclli");
+					//actvtnpage.tbx_devicelookup.sendKeys("TESTYYYYT01");
+					Thread.sleep(3000);
+					devcreatepage.btn_lookuplogicalfrm.click();
+					Thread.sleep(10000);
+					devcreatepage.btn_lookuplogicalport.click();
+					Thread.sleep(2000);
+					devcreatepage.btn_lookuplogicalport_lookup.click();
+					Thread.sleep(2000);
+					devcreatepage.lbl_selctlogicalport_lookup.click();	
+					Thread.sleep(2000);
+				}
+			
+				else if(atributesOfPage.get(i)=="Location Role*"){
+					if(devcreatepage.rdbtn_addRange.isVisible()){
+						devcreatepage.rdbtn_addRange.click();
+						Thread.sleep(3000);
+						}
+					for(int j=1;j<=3;j++){
+						devcreatepage.ddl_locationRole.selectByIndex(j);
+						Thread.sleep(3000);
+						}
+					System.out.println("Done with filling location role");
+						break;
+				}					
+		
+				else if(atributesOfPage.get(i)=="New Construction Ind*"){
+					devcreatepage.ddl_NewConstructionIndicator.selectByVisibleText("Yes");
+					break;
+				}	
+			
 			}
 			fill_fields_from("OVCreateDevicePage",testdata,"Devicedata");	
 			if(devcreatepage.btn_FindAddressRange.isVisible()){
@@ -583,12 +583,13 @@ public class UserSteps extends OmniVueSteps  {
 			actvtnpage.ddl_createType.selectByVisibleText(type);
 			Thread.sleep(1000);
 			Thread.sleep(1000);
-			switch(type){
-					case "Inventory": 	actvtnpage.ddl_CreateinvntryType.selectByVisibleText(subtype);
-										break;
-					case "Network Build": 	actvtnpage.ddl_CreateNetworkType.selectByVisibleText(subtype);
-											break;
-				}	
+			if(type=="Inventory"){
+				actvtnpage.ddl_CreateinvntryType.selectByVisibleText(subtype);
+				
+			}
+			else if(type=="Network Build"){
+				actvtnpage.ddl_CreateNetworkType.selectByVisibleText(subtype);
+			}			
 			Thread.sleep(1000);
 				} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
@@ -603,39 +604,36 @@ public class UserSteps extends OmniVueSteps  {
 		actvtnpage.selecttech(techType);
 		//int Validation=1;
 		//actvtnpage.ddl_techType.selectByVisibleText(techType);
-		switch(techType){
-				case "PASSIVE":  	//String[] actualDeviceType = {"","Fiber Distribution Hub","Fiber Distribution Panel","Fiber Multiport Service Terminal","Fiber Splitter"};
-									WebElement dropdown = actvtnpage.ddl_devType;
-									//ArrayList<String> ExpDeviceType = null;
-									 Select select = new Select(dropdown);  
-							
-									 List<WebElement> options = select.getOptions();  
-									 System.out.println(options.size());
-									 
-									 for(int j=0;j<=options.size()-1;j++)  {
-										 
-									/*	 for (int i=0; i<actualDeviceType.length; i++){
-											 
-										      if (options.get(j).getText().equals(actualDeviceType[i]))
-										    		  {										       
-										        System.out.println(options.get(j).getText()+"==="+actualDeviceType[i]);
-										    	       }
-										 
-									 		} */
-										 switch(options.get(j).getText()){
-													 case "":
-													 case "Fiber Distribution Hub":
-													 case "Fiber Distribution Panel":
-													 case "Fiber Multiport Service Terminal":
-													 case "Fiber Splitter": System.out.println(options.get(j).getText()+"Is present"); break;
-													 default: throw new Error(options.get(j).getText()+"Is not present");											 
-										 		}
-									 }
-									 	
-									 
-				default:break;
+		if(techType=="PASSIVE"){
+			//String[] actualDeviceType = {"","Fiber Distribution Hub","Fiber Distribution Panel","Fiber Multiport Service Terminal","Fiber Splitter"};
+			WebElement dropdown = actvtnpage.ddl_devType;
+			//ArrayList<String> ExpDeviceType = null;
+			 Select select = new Select(dropdown);  
+	
+			 List<WebElement> options = select.getOptions();  
+			 System.out.println(options.size());
+			 
+			 for(int j=0;j<=options.size()-1;j++)  {
+				 
+			/*	 for (int i=0; i<actualDeviceType.length; i++){
+					 
+				      if (options.get(j).getText().equals(actualDeviceType[i]))
+				    		  {										       
+				        System.out.println(options.get(j).getText()+"==="+actualDeviceType[i]);
+				    	       }
+				 
+			 		} */
+				 if(options.get(j).getText()=="" || options.get(j).getText()=="Fiber Distribution Hub" || options.get(j).getText()=="Fiber Distribution Panel" || options.get(j).getText()=="Fiber Multiport Service Terminal" || options.get(j).getText()=="Fiber Splitter"){
+				 
+								 System.out.println(options.get(j).getText()+"Is present");
+							 }
+				 else throw new Error(options.get(j).getText()+"Is not present");
+						 }
+				 }	
+		 System.out.println("successfully validated"); 
 		}
 		
+
 		/*
 		String[] actualDeviceType = {"","Fiber Distribution Hub","Fiber Distribution Panel","Fiber Multiport Service Terminal","Fiber Splitter"};
 		 WebElement dropdown = getDriver().findElement(By.xpath("//label[text()='Device Type']/following-sibling::select"));
@@ -661,8 +659,8 @@ public class UserSteps extends OmniVueSteps  {
 		   
 		 // Assert.assertTrue(match);
 		 }*/
-		 System.out.println("successfully validated"); 
-	}
+		
+	
 	
 	@Step				//Selecting Device category Type & its Sub-category for Inventory Create form
 	public void device_select(String devtype,String devsubtype){
@@ -707,33 +705,16 @@ public class UserSteps extends OmniVueSteps  {
 		//System.out.println(id);
 	for(int i=0;i<attributeList.size();i++){
 		System.out.println(atributesOfPage.get(i));
+		if(attributes=="Passive"){
+			if(atributesOfPage.get(i)=="Is Diverse" || atributesOfPage.get(i)=="Affiliate Owner" || atributesOfPage.get(i)=="Monitoring Type" || atributesOfPage.get(i)=="Management VLAN" || atributesOfPage.get(i)=="SNMP Port Number" || atributesOfPage.get(i)=="SNMP Version" || atributesOfPage.get(i)=="SNMP User" || atributesOfPage.get(i)=="Management IP Subnet Mask" || atributesOfPage.get(i)=="RO Community String"){
+				Validation=0; output=atributesOfPage.get(i); break;
+			}		
+		}
 		
-		switch(attributes){						
-						case "Passive":	switch(atributesOfPage.get(i)) {		
-														case "Is Diverse": 
-														case "Affiliate Owner": 							
-														case "Monitoring Type": 	
-														case "Management VLAN":						
-														case "SNMP Port Number":
-														case "SNMP Version": 
-														case "SNMP User": 
-														case "Management IP Subnet Mask": 
-														case "RO Community String": Validation=0; output=atributesOfPage.get(i); break;
-														default:break;
-														}	
-						case "Location": switch(atributesOfPage.get(i)) {		
-														case "Is Diverse": 
-														case "Affiliate Owner": 							
-														case "Monitoring Type": 	
-														case "Management VLAN":						
-														case "SNMP Port Number":
-														case "SNMP Version": 
-														case "SNMP User": 
-														case "Management IP Subnet Mask": 
-														case "RO Community String": Validation=0; output=atributesOfPage.get(i); break;
-														default:break;
-														}	
-		
+		else if(attributes=="Location"){
+		if(atributesOfPage.get(i)=="Is Diverse" || atributesOfPage.get(i)=="Affiliate Owner" || atributesOfPage.get(i)=="Monitoring Type" || atributesOfPage.get(i)=="Management VLAN" || atributesOfPage.get(i)=="SNMP Port Number" || atributesOfPage.get(i)=="SNMP Version" || atributesOfPage.get(i)=="" || atributesOfPage.get(i)=="Management IP Subnet Mask" || atributesOfPage.get(i)=="RO Community String"){
+			Validation=0; output=atributesOfPage.get(i); break;
+										}
 		}
 	}
 	if(Validation==1){
@@ -906,7 +887,7 @@ public class UserSteps extends OmniVueSteps  {
 		
 		for(int i=0;i<acutalList.size();i++){
 			//System.out.println(atributesOfPage.get(i));
-		switch(atributesOfPage.get(i)) {
+		//switch(atributesOfPage.get(i)) {
 		/*
 		case "": 
 			
@@ -966,8 +947,8 @@ public class UserSteps extends OmniVueSteps  {
 	//enduser.locn_field();
 	//devcreatepage.lnk_locn.click();	
 	*/
-		}}
-	}
+	//	}
+	}}
 	catch (InterruptedException e) {
 		e.printStackTrace();
 	}

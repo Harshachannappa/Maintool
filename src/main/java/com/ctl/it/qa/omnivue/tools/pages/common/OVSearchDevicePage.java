@@ -54,27 +54,33 @@ public class OVSearchDevicePage extends OmniVuePage {
 		//tab_ctag.click();
 		Thread.sleep(5000);
 		System.out.println("Executed the line"+tab);
-		switch(tab){
 		
-		case "Services": tab_services.click();
-						Thread.sleep(35000);
-						break;
-		case "CTag": tab_ctag.click();
-						Thread.sleep(3000);
-						break;
-		case "Orders": tab_ctag.click();
-						Thread.sleep(000);
-						break;
-		case "Contacts": tab_contact.click();
-						Thread.sleep(2000);
-						break;	
+		if(tab=="Services"){
+			tab_services.click();
+			Thread.sleep(35000);
+		}
+		else if(tab=="CTag"){
+			tab_ctag.click();
+			
+		}
+		else if(tab=="Orders"){
+			tab_orders.click();
+			
+		}
+		else if(tab=="Contacts"){
+			 tab_contact.click();
+			
+		}
+		else if(tab=="BAM Report"){
+			tab_bamreport.click();
+			
+		}
+		else if(tab=="Activations"){
+			tab_Activations.click();
+			
+		}
+		Thread.sleep(35000);
 						
-		case "BAM Report": tab_bamreport.click();
-						Thread.sleep(5000);
-						break;	
-		case "Activations": tab_Activations.click();
-							Thread.sleep(3000);
-		}				
 	}
 	
 	public void attribute_field() throws Exception {
