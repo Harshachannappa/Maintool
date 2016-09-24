@@ -321,6 +321,51 @@ public class OVCreateDevicePage extends OmniVuePage {
 
 		//End of location creation
 		
+		// Editing the device page--9/23
+		@FindBy(xpath="//label[@class='col-lg-3 col-md-3 col-sm-3 col-xs-3 control-label']")//Only selecting the first rom not all the elements
+		//@FindBy(xpath=".//*[@class='ng-scope']/div[11]/div")
+		public List<WebElementFacade> lbl_allXapath1;
+		
+		@FindBy(xpath=".//*[@id='left-content-tab']/div/div/div[1]/div/div/div[3]/div/div[3]/ng-include/div[2]/div[1]/div[3]/div[2]/select")
+		public WebElementFacade ddl_FunctionalStatus;
+		
+		@FindBy(xpath="(//span[@class='input-group-addon span-img']/img)[3]")
+		public WebElementFacade btn_subscriberName;
+		
+		@FindBy(xpath=".//*[@id='addShelf']/div[5]/div[2]/input[@value='LookUp']")
+		public WebElementFacade btn_subscriberLookUp;
+		
+		@FindBy(xpath=".//*[@id='subscriber_lookup_0']/tbody/tr/td[1]/a/span")
+		public WebElementFacade lnk_subscriberName;
+		
+		@FindBy(xpath="(//div[@class='row form-group-device'])[16]/div[3]//img")
+		public WebElementFacade btn_searchSubscriberName;
+		
+		@FindBy(xpath="(//input[@value='Save'])[1]")
+		public WebElementFacade btn_saveDeviceDetail;
+		
+		//End of editing device page
+		
+	//New Changes -- 9/23
+		
+		@FindBy(id="streetType")
+		public WebElementFacade ddl_wireCenterstreetType;
+		
+		@FindBy(id="city")
+		public WebElementFacade tbx_wireCenterCity;
+
+		@FindBy(id="state")
+		public WebElementFacade tbx_wireCenterstate;
+		
+		@FindBy(id="zip")
+		public WebElementFacade tbx_wireCenterzip;
+		
+		@FindBy(xpath="(//button[text()='Look Up'])[1]")
+		public WebElementFacade btn_wireCenterLookUp;
+		
+		@FindBy(xpath="(//button[text()='Cancel'])[1]")
+		public WebElementFacade btn_wireCenterCancel;
+		
 	@Override
 	public WebElementFacade getUniqueElementInPage() {
 		// TODO Auto-generated method stub

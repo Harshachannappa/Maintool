@@ -3,11 +3,14 @@ package com.ctl.it.qa.omnivue.tools.pages.common;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.ctl.it.qa.omnivue.tools.pages.OmniVuePage;
+import com.ctl.it.qa.omnivue.tools.steps.user.UserSteps;
+import com.ctl.it.qa.staf.xml.reader.IntDataContainer;
 
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
@@ -15,6 +18,7 @@ import net.serenitybdd.core.pages.WebElementFacade;
 public class OVServiceDetailsPage extends OmniVuePage {
 
 	OVCreateDevicePage devcreatepage;
+	OVActivationPage actvtnpage;
 	
 	@FindBy(id="NAME")
 	public WebElementFacade tbx_editDeviceName;
@@ -95,7 +99,15 @@ public class OVServiceDetailsPage extends OmniVuePage {
 	@FindBy(xpath=".//*[@ng-controller='viewQOSCtrl']/div/div[1]")
 	public WebElementFacade lbl_QOS_msg;
 	
+	//New updates on QOS--9/23
+	
+	@FindBy(xpath="(//div[label[contains(text(),'QOS Template Name')]]/following-sibling::div/label[1])[1]")
+	public WebElementFacade lbl_templateName;
+	
 	//End of QOS Template 
+	
+	@FindBy(xpath=".//*[@id='right-content']/div/div[2]/div/div/div[2]/div/div[2]/div/div/div[1]/div/input")
+	public WebElementFacade btn_addSubscriber;
 	
 	// Action Tab + Expand button
 	
@@ -104,6 +116,11 @@ public class OVServiceDetailsPage extends OmniVuePage {
 	
 	@FindBy(xpath = ".//*[@id='data:1610803390']/td")
 	public WebElementFacade lbl_TableActivationTab;
+	
+	//New update---9/23
+	
+	@FindBy(xpath="//h4[text()='Subscriber Lookup']")
+	public WebElementFacade tag_SubscriberLookup;
 	
 	@Override
 	public WebElementFacade getUniqueElementInPage() {
@@ -245,6 +262,9 @@ public class OVServiceDetailsPage extends OmniVuePage {
 			else if(actionkey.equals("Save")){
 				btn_QOS_save.click();
 			}
+			else  if(actionkey.equals("Add Subscribers")){
+				btn_addSubscriber.click();
+			}
 						
 			Thread.sleep(5000);			
 			
@@ -301,6 +321,39 @@ public class OVServiceDetailsPage extends OmniVuePage {
 				System.out.println("Verification to activations tab is Failed");
 			}
 		}
+		
+		public void validateViewList(String template){
+			try {
+				String sTemplateName = lbl_templateName.getText();
+				System.out.println("sTemplateName ="+sTemplateName);
+				UserSteps enduser = new UserSteps();
+				
+				IntDataContainer datacontainer = enduser.get_data_for_page(actvtnpage).getContainer(template);
+				String fieldValue = datacontainer.getFieldValue("tbx_templateName");
+				String FielsString[] = fieldValue.split(":");
+				String actualFieldvalue = FielsString[1];
+				System.out.println(actualFieldvalue);
+			if(sTemplateName.contains(actualFieldvalue)){
+				Thread.sleep(3000);
+				System.out.println("List view displayed when search is performed.");
+
+			}
+			else
+			{
+				System.out.println("List view not displayed when search is performed.");
+			}
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				
+			}
+		
+		public void validate_subscriberLookupPage() {
+			String fieldValue = tag_SubscriberLookup.getText();
+			Assert.assertEquals("Page is not present", "Subscriber Lookup", fieldValue);
+			System.out.println("subscriber Lookup Page is present");
+	}
 		
 		
 }

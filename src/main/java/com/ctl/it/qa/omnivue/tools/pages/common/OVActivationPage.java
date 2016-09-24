@@ -346,6 +346,7 @@ public class OVActivationPage extends OmniVuePage {
 	//End of QOS Template
 	
 	
+	
 	@FindBy(xpath=".//*[text()='Launch Create Form' and @ng-click='createDevice();']")						//Shiva
 	public WebElementFacade btn_createdevice;
 	
@@ -355,6 +356,185 @@ public class OVActivationPage extends OmniVuePage {
 	
 	@FindBy(xpath="//select[@id='typeSelection' and @ng-model='resServiceType']")
 	public WebElementFacade ddl_createServicetype;
+	
+	
+	//New changes--9/23
+	
+	@FindBy(xpath="(//div[@class='row form-group-device'])[2]/div[2]/select")
+	public WebElementFacade ddl_FunctionalStatus;
+	
+	@FindBy(xpath="//div[label[contains(text(),'Element Note')]]/following-sibling::div//input[@ng-model='deviceDetail.DESCRIPTION']")
+	public WebElementFacade tbx_networkElementNode;
+	
+	@FindBy(xpath="//div[label[text()='Alias1']]/following-sibling::div//input[@ng-model='deviceDetail.ALIAS1']")
+	public WebElementFacade tbx_Alias1;
+	
+	@FindBy(xpath="//div[label[text()='Alias2']]/following-sibling::div//input[@ng-model='deviceDetail.ALIAS2']")
+	public WebElementFacade tbx_Alias2;
+	
+	@FindBy(xpath="(//div[@class='row form-group-device'])[10]/div[2]/input")
+	public WebElementFacade tbx_vedorPartNum;
+	
+	@FindBy(xpath="(//div[@class='row form-group-device'])[10]/div[3]/input")
+	public WebElementFacade tbx_partType;
+	
+	@FindBy(xpath="(//div[@class='row form-group-device'])[10]/div[4]/input")
+	public WebElementFacade tbx_manufacturerPartNum;
+	
+	@FindBy(xpath="//div[label[text()='Management VLAN']]/following-sibling::div//input[@ng-model='deviceDetail.MGMTVLAN']")
+	public WebElementFacade tbx_manufacturerVLAN;
+	
+	
+	@FindBy(xpath="//thead[tr[th[text()='Provision Status']]]/following-sibling::tbody//td[2]")
+	public WebElementFacade tag_functionalStatus;
+	
+	@FindBy(xpath="//thead[tr[th[text()='Provision Status']]]/following-sibling::tbody//td[3]")
+	public WebElementFacade tag_networkElementNode;
+	
+	@FindBy(xpath="//thead[tr[th[text()='Device CLLI']]]/following-sibling::tbody[2]//td[1]")
+	public WebElementFacade tag_alias1;
+	
+	@FindBy(xpath="//thead[tr[th[text()='Device CLLI']]]/following-sibling::tbody[2]//td[3]")
+	public WebElementFacade tag_alias2;
+	
+	@FindBy(xpath="//thead[tr[th[text()='Device Type']]]/following-sibling::tbody[2]//td[2]")
+	public WebElementFacade tag_vendorPortNum;
+	
+	@FindBy(xpath="//thead[tr[th[text()='Device Type']]]/following-sibling::tbody[2]//td[3]")
+	public WebElementFacade tag_partType;
+	
+	@FindBy(xpath="//thead[tr[th[text()='Device Type']]]/following-sibling::tbody[2]//td[4]")
+	public WebElementFacade tag_ManufacpartNum;
+	
+	@FindBy(xpath="//thead[tr[th[text()='Management VLAN']]]/following-sibling::tbody[1]//td[3]")
+	public WebElementFacade tag_ManagementVLAN;
+	
+	@FindBy(xpath = "//div[label[text()='Chassis Serial Number']]/following-sibling::div//input[@ng-model='deviceDetail.CHASSISSERIALNUMBER']")
+	public WebElementFacade tbx_NDchasisSerialNum;
+	
+	@FindBy(xpath = "//div[label[text()='Serial Number']]/following-sibling::div//input[@ng-model='deviceDetail.SERIALNUMBER']")
+	public WebElementFacade tbx_NDserialNum;
+	
+	@FindBy(xpath = "//div[label[text()='Socket Number']]/following-sibling::div//input[@ng-model='deviceDetail.SOCKETNUMBER']")
+	public WebElementFacade tbx_NDSocketNum;
+	
+	@FindBy(xpath = "//div[label[text()='Hardware Version']]/following-sibling::div//input[@ng-model='deviceDetail.HARDWAREVERSION']")
+	public WebElementFacade tbx_NDHardwareVersion;
+	
+	@FindBy(xpath = "//div[label[text()='Software Version']]/following-sibling::div//input[@ng-model='deviceDetail.SOFTWAREVERSION']")
+	public WebElementFacade tbx_NDSoftwareVersion;
+	
+	@FindBy(xpath = "//div[label[text()='Management IP Subnet Mask']]/following-sibling::div//input[@ng-model='deviceDetail.MGMT_IP_SUBNET_MASK']")
+	public WebElementFacade tbx_NDIPSubnetMask;
+	
+	@FindBy(xpath = "//div[label[text()='Revision']]/following-sibling::div//input[@ng-model='deviceDetail.REVISION']")
+	public WebElementFacade tbx_NDRevision;
+	
+	@FindBy(xpath = "//div[label[text()='Discontinue Date']]/following-sibling::div//input[@ng-model='deviceDetail.DISCONTINUEDATE']")
+	public WebElementFacade tbx_DisContinueDate;
+	
+	@FindBy(xpath = "//div[label[text()='Discontinue Reason']]/following-sibling::div//input[@ng-model='deviceDetail.DISCONTINUEREASON']")
+	public WebElementFacade tbx_DisContinueReason;
+	
+	@FindBy(xpath = "//div[label[text()='MAC Address']]/following-sibling::div//input[@ng-model='deviceDetail.MACADDRESS']")
+	public WebElementFacade tbx_NDMacAddress;
+	
+	@FindBy(xpath = "//div[label[text()='SNMP Object ID']]/following-sibling::div//input[@ng-model='deviceDetail.SNMPOBJECTID']")
+	public WebElementFacade tbx_NDSNMPObjectID;
+	
+	@FindBy(xpath = "//div[label[text()='SNMP Port Number']]/following-sibling::div//input[@ng-model='deviceDetail.SNMP_PORT_ID']")
+	public WebElementFacade tbx_NDSNMPPortNum;
+	
+	@FindBy(xpath = "//div[label[text()='Monitoring Type']]/following-sibling::div//input[@ng-model='deviceDetail.MONITORING_TYPE']")
+	public WebElementFacade tbx_NDMonitoringType;
+	
+	@FindBy(xpath = "//div[label[text()='Firmware Version']]/following-sibling::div//input[@ng-model='deviceDetail.FIRMWAREVERSION']")
+	public WebElementFacade tbx_NDFirmWareVersion;
+	
+	@FindBy(xpath = "//div[label[text()='NMS Type']]/following-sibling::div//input[@ng-model='deviceDetail.NMSTYPE']")
+	public WebElementFacade tbx_NDNMSType;
+	
+	@FindBy(xpath = "//div[label[text()='NMS Host Name']]/following-sibling::div//input[@ng-model='deviceDetail.NMSHOSTNAME']")
+	public WebElementFacade tbx_NDNMSHostName;
+	
+	@FindBy(xpath = "//div[label[text()='NMS Description']]/following-sibling::div//input[@ng-model='deviceDetail.NMSDESCRIPTION']")
+	public WebElementFacade tbx_NDNMSDescription;
+	
+	@FindBy(xpath = "//div[label[text()='Network Identifier']]/following-sibling::div//input[@ng-model='deviceDetail.NETWORKIDENTIFIER']")
+	public WebElementFacade tbx_NDNetworkIdentifier;
+	
+	@FindBy(xpath = "//div[label[text()='Network Name']]/following-sibling::div//input[@ng-model='deviceDetail.NETWORKNAME']")
+	public WebElementFacade tbx_NDNetworkName;
+	
+	@FindBy(xpath="//thead[tr[th[text()='Chassis Serial Number']]]/following-sibling::tbody[1]//td[1]")
+	public WebElementFacade tag_NDchasisSerialNum;
+	
+	@FindBy(xpath="//thead[tr[th[text()='Chassis Serial Number']]]/following-sibling::tbody[1]//td[2]")
+	public WebElementFacade tag_NDserialNum;
+	
+	@FindBy(xpath="//thead[tr[th[text()='Chassis Serial Number']]]/following-sibling::tbody[2]//td[1]")
+	public WebElementFacade tag_NDSocketNum;
+	
+	@FindBy(xpath="//thead[tr[th[text()='Chassis Serial Number']]]/following-sibling::tbody[2]//td[2]")
+	public WebElementFacade tag_NDHardwareVersion;
+	
+	@FindBy(xpath="//thead[tr[th[text()='Chassis Serial Number']]]/following-sibling::tbody[2]//td[3]")
+	public WebElementFacade tag_NDSoftwareVersion;
+	
+	@FindBy(xpath="//thead[tr[th[text()='Chassis Serial Number']]]/following-sibling::tbody[2]//td[4]")
+	public WebElementFacade tag_NDIPSubnetMask;
+	
+	@FindBy(xpath="//thead[tr[th[text()='Chassis Serial Number']]]/following-sibling::tbody[3]//td[1]")
+	public WebElementFacade tag_NDRevision;
+	
+	@FindBy(xpath="//thead[tr[th[text()='Chassis Serial Number']]]/following-sibling::tbody[3]//td[2]")
+	public WebElementFacade tag_DisContinueDate;
+
+	@FindBy(xpath="//thead[tr[th[text()='Chassis Serial Number']]]/following-sibling::tbody[3]//td[3]")
+	public WebElementFacade tag_DisContinueReason;
+	
+	@FindBy(xpath="//thead[tr[th[text()='MAC Address']]]/following-sibling::tbody[1]//td[1]")
+	public WebElementFacade tag_NDMacAddress;;
+	
+	@FindBy(xpath="//thead[tr[th[text()='MAC Address']]]/following-sibling::tbody[1]//td[2]")
+	public WebElementFacade tag_NDSNMPObjectID;;
+	
+	@FindBy(xpath="//thead[tr[th[text()='MAC Address']]]/following-sibling::tbody[1]//td[3]")
+	public WebElementFacade tag_NDSNMPPortNum;;
+	
+	@FindBy(xpath="//thead[tr[th[text()='MAC Address']]]/following-sibling::tbody[1]//td[4]")
+	public WebElementFacade tag_NDMonitoringType;;
+	
+	@FindBy(xpath="//thead[tr[th[text()='MAC Address']]]/following-sibling::tbody[2]//td[1]")
+	public WebElementFacade tag_NDFirmWareVersion;;
+	
+	@FindBy(xpath="//thead[tr[th[text()='MAC Address']]]/following-sibling::tbody[2]//td[2]")
+	public WebElementFacade tag_NDNMSType;;
+	
+	@FindBy(xpath="//thead[tr[th[text()='MAC Address']]]/following-sibling::tbody[2]//td[3]")
+	public WebElementFacade tag_NDNMSHostName;;
+	
+	@FindBy(xpath="//thead[tr[th[text()='MAC Address']]]/following-sibling::tbody[2]//td[4]")
+	public WebElementFacade tag_NDNMSDescription;;
+	
+	@FindBy(xpath="//thead[tr[th[text()='MAC Address']]]/following-sibling::tbody[3]//td[1]")
+	public WebElementFacade tag_NDNetworkIdentifier;;
+	
+	@FindBy(xpath="//thead[tr[th[text()='MAC Address']]]/following-sibling::tbody[3]//td[2]")
+	public WebElementFacade tag_NDNetworkName;;
+	
+	
+	@FindBy(xpath="(//div[@id='cllilookup'])[1]/div[3]//input[@id='address']")
+	public WebElementFacade tbx_wireCenteraddress;
+	
+	@FindBy(xpath="(//div[@id='cllilookup'])[1]/div[3]//input[@id='streetName']")
+	public WebElementFacade tbx_wireCenterstreetName;
+	
+	@FindBy(xpath="(//div[@id='cllilookup'])[1]/div[4]//input[@id='buildingCLLI']")
+	public WebElementFacade tbx_wireCenterbuildingCLLI;
+	
+	@FindBy(id="WIRECENTERCLLI")
+	public WebElementFacade tbx_wireCenterCLLI;
 	
 	@Override
 	public WebElementFacade getUniqueElementInPage() {

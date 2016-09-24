@@ -5,6 +5,7 @@ import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.junit.Assert;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
@@ -793,6 +794,17 @@ public class UserSteps extends OmniVueSteps  {
 		actvtnpage.sel_devicesubtype(splitter_option);		
 	}
 	
+	//New Update--9/23
+	
+	@Step
+	public void edit_Button_NetworkingDetailPage(String button) throws InterruptedException {
+		searchdevicepage.click_EditDeviceDetailbtn(button);
+	}
+	
+	@Step
+	public void validate_lookupPage() {
+		servicedetailspage.validate_subscriberLookupPage();		
+	}
 	
 	//End of search 
 	
@@ -967,6 +979,101 @@ public class UserSteps extends OmniVueSteps  {
 		actvtnpage.i_Select_for_the_drop_down_Service_Type_actvtnpage(service_type);		
 	}
 	
+	//Pratim Team Updates--9/23/2016
+	
+	@Step
+	public void edit_Button_DeviceDetailPage(String button) throws InterruptedException {
+		devicelookuppage.click_Editbtn(button);
+	}
+	
+	@Step
+	public void fillenabledfield(String testdata){
+		try
+		{	
+			Thread.sleep(5000);
+			List<WebElementFacade> acutalList = devcreatepage.lbl_allXapath1;
+			ArrayList<String> atributesOfPage=new ArrayList<String>();
+			
+			System.out.println("==========Adding the attribute to the array list==============");
+			for(int j=0;j<acutalList.size();j++){
+				
+				atributesOfPage.add(j, acutalList.get(j).getText());
+				
+				//System.out.println("Step Two done");
+				//System.out.println(atributesOfPage.get(j));
+			}
+			
+			System.out.println("atributesOfPage = "+atributesOfPage);
+			Thread.sleep(3000);	
+			//for(int i=0;i<acutalList.size();i++){
+			for(int i=0;i<atributesOfPage.size();i++){
+				//System.out.println(atributesOfPage.get(i));
+				if(atributesOfPage.get(i).equals("Functional Status")){
+			
+						devcreatepage.ddl_FunctionalStatus.selectByVisibleText("Faulty");
+						Thread.sleep(3000);	
+						
+				}
+			
+				else if(atributesOfPage.get(i).equals("Subscriber Name*")){					
+					
+						devcreatepage.btn_subscriberName.click();
+						Thread.sleep(5000);
+									//String parentwin=devcreatepage.window_switch();
+						Thread.sleep(5000);
+						fill_fields_from("OVActivationPage",testdata,"SubscriberName");
+						devcreatepage.btn_subscriberLookUp.click();//Rework
+						Thread.sleep(5000);
+						devcreatepage.lnk_subscriberName.click();//Rework
+						Thread.sleep(5000);
+				}
+				
+				else if(atributesOfPage.get(i).equals("Subscriber Name")){							
+				
+						devcreatepage.btn_searchSubscriberName.click();
+						Thread.sleep(5000);
+					// String parentwin=devcreatepage.window_switch();
+						Thread.sleep(5000);
+						fill_fields_from("OVActivationPage", testdata, "SubscriberName");
+						devcreatepage.btn_subscriberLookUp.click();// Rework
+						Thread.sleep(5000);
+						devcreatepage.lnk_subscriberName.click();// Rework
+						Thread.sleep(5000);
+					// devcreatepage.switch_win(parentwin);
+							
+				}
+			}
+			
+			devcreatepage.btn_saveDeviceDetail.click();//Rework
+			Thread.sleep(5000);
+		
+		}
+		catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	@Step
+	public void clickedNetworkingDetailsTab(){
+		searchdevicepage.tabNetworkDetail();
+	}
+	
+	@Step
+	public void saveNetworkingDetails() throws InterruptedException{
+		searchdevicepage.saveNetworkingDetails();
+	}
+	
+	@Step
+	public void fillSubscriberFields(String testdata) throws InterruptedException{
+		devcreatepage.btn_subsciber.click();
+		Thread.sleep(5000);
+		fill_fields_from("OVCreateDevicePage",testdata,"Subscriberdata");
+		devcreatepage.btn_sublookup.click();
+		Thread.sleep(1000);
+		devcreatepage.lnk_addsub.click();
+		Thread.sleep(3000);
+		}
+	
 	
 	//Validation sections --26/8/2016
 	
@@ -981,6 +1088,236 @@ public class UserSteps extends OmniVueSteps  {
 		devcreatepage.validate_apacheSolr_for_subscriber_in_create_device_service_createpage();
 	}
 	
+	//Validation new update -- 9/23
+	@Step
+	public void validateDeviceDetail(String template){
+		searchdevicepage.validateDeviceDetail(template);
+	}
+	
+	@Step
+	public void validateNetworkDetail(String template){
+		searchdevicepage.validateNetworkDetail(template);
+	}
+	
+	@Step
+	public void validate_DeviceName() throws InterruptedException{
+		searchdevicepage.validate_DeviceNameValue();
+	}
+	
+	@Step
+	public void validateViewList(String template){
+		servicedetailspage.validateViewList(template);
+	}
+	
+	@Step
+	public void verifyDeviceDetailsField(){
+		String ExpectedfunctionalStatus = actvtnpage.tag_functionalStatus.getText();
+		String ExpectednetworkElementNode = actvtnpage.tag_networkElementNode.getText();
+		String Expectedalias1 = actvtnpage.tag_alias1.getText();
+		String Expectedalias2 = actvtnpage.tag_alias2.getText();
+		String ExpectedvendorPortNum = actvtnpage.tag_vendorPortNum.getText();
+		String ExpectedpartType = actvtnpage.tag_partType.getText();
+		String ExpectedManufacpartNum = actvtnpage.tag_ManufacpartNum.getText();
+		String ExpectedManagementVLAN = actvtnpage.tag_ManagementVLAN.getText();
+		
+			UserSteps enduser = new UserSteps();
+			
+			IntDataContainer datacontainer = enduser.get_data_for_page(actvtnpage).getContainer("TC55484-CD");
+			String functionalStatus = datacontainer.getFieldValue("ddl_FunctionalStatus");
+			String networkElementNode = datacontainer.getFieldValue("tbx_networkElementNode");
+			String alias1 = datacontainer.getFieldValue("tbx_Alias1");
+			String alias2 = datacontainer.getFieldValue("tbx_Alias2");
+			String vendorPortNum = datacontainer.getFieldValue("tbx_vedorPartNum");
+			String partType = datacontainer.getFieldValue("tbx_partType");
+			String ManufacpartNum = datacontainer.getFieldValue("tbx_manufacturerPartNum");
+			String ManagementVLAN = datacontainer.getFieldValue("tbx_manufacturerVLAN");
+			String functionalStatusField[] = functionalStatus.split(":");
+			String actualfunctionalStatus = functionalStatusField[1];
+			String networkElementNodeField[] = networkElementNode.split(":");
+			String actualnetworkElementNode = networkElementNodeField[1];
+			String alias1Field[] = alias1.split(":");
+			String actualalias1 = alias1Field[1];
+			String alias2Field[] = alias2.split(":");
+			String actualalias2 = alias2Field[1];
+			String vendorPortNumField[] = vendorPortNum.split(":");
+			String actualvendorPortNum = vendorPortNumField[1];
+			String partTypeField[] = partType.split(":");
+			String actualpartType = partTypeField[1];
+			String ManufacpartNumField[] = ManufacpartNum.split(":");
+			String actualManufacpartNum = ManufacpartNumField[1];
+			String ManagementVLANField[] = ManagementVLAN.split(":");
+			String actualManagementVLAN = ManagementVLANField[1];
+			
+			Assert.assertEquals(ExpectedfunctionalStatus, actualfunctionalStatus);
+			Assert.assertEquals(ExpectednetworkElementNode, actualnetworkElementNode);
+			Assert.assertEquals(Expectedalias1, actualalias1);
+			Assert.assertEquals(Expectedalias2, actualalias2);
+			Assert.assertEquals(ExpectedvendorPortNum, actualvendorPortNum);
+			Assert.assertEquals(ExpectedpartType, actualpartType);
+			Assert.assertEquals(ExpectedManufacpartNum, actualManufacpartNum);
+			Assert.assertEquals(ExpectedManagementVLAN, actualManagementVLAN);
+}
+	
+	@Step
+	public void verifyNetworkingDetailsField(){
+
+		String ExpectedNDchasisSerialNum = actvtnpage.tag_NDchasisSerialNum.getText();
+		String ExpectedNDserialNum = actvtnpage.tag_NDserialNum.getText();
+		String ExpectedNDSocketNum = actvtnpage.tag_NDSocketNum.getText();
+		String ExpectedNDHardwareVersion = actvtnpage.tag_NDHardwareVersion.getText();
+		String ExpectedNDSoftwareVersion = actvtnpage.tag_NDSoftwareVersion.getText();
+		String ExpectedNDIPSubnetMaskm = actvtnpage.tag_NDIPSubnetMask.getText();
+		String ExpectedNDRevision= actvtnpage.tag_NDRevision.getText();
+		String ExpectedDisContinueReason = actvtnpage.tag_DisContinueReason.getText();
+		String ExpectedNDMacAddress = actvtnpage.tag_NDMacAddress.getText();
+		String ExpectedNDSNMPObjectID = actvtnpage.tag_NDSNMPObjectID.getText();
+//		String ExpectedNDSNMPPortNum = actvtnpage.tag_NDSNMPPortNum.getText();
+//		String ExpectedNDMonitoringTyp = actvtnpage.tag_NDMonitoringType.getText();
+		String ExpectedNDFirmWareVersion = actvtnpage.tag_NDFirmWareVersion.getText();
+		String ExpectedNDNMSType = actvtnpage.tag_NDNMSType.getText();
+		String ExpectedNDNMSHostName = actvtnpage.tag_NDNMSHostName.getText();
+		String ExpectedNDNMSDescription = actvtnpage.tag_NDNMSDescription.getText();
+		String ExpectedNDNetworkIdentifier = actvtnpage.tag_NDNetworkIdentifier.getText();
+		String ExpectedNDNetworkName = actvtnpage.tag_NDNetworkName.getText();
+		
+			UserSteps enduser = new UserSteps();
+			
+			IntDataContainer datacontainer = enduser.get_data_for_page(actvtnpage).getContainer("TC55484-ND");
+			String chasisSerialNum = datacontainer.getFieldValue("tbx_NDchasisSerialNum");
+			String serialNum = datacontainer.getFieldValue("tbx_NDserialNum");
+			String SocketNum = datacontainer.getFieldValue("tbx_NDSocketNum");
+			String HardwareVersion = datacontainer.getFieldValue("tbx_NDHardwareVersion");
+			String SoftwareVersion = datacontainer.getFieldValue("tbx_NDSoftwareVersion");
+			String IPSubnetMask = datacontainer.getFieldValue("tbx_NDIPSubnetMask");
+			String Revision = datacontainer.getFieldValue("tbx_NDRevision");
+			String DisContinueReason = datacontainer.getFieldValue("tbx_DisContinueReason");
+			String MacAddress = datacontainer.getFieldValue("tbx_NDMacAddress");
+			String SNMPObjectID = datacontainer.getFieldValue("tbx_NDSNMPObjectID");
+//			String SNMPPortNum = datacontainer.getFieldValue("tbx_NDSNMPPortNum");
+//			String MonitoringType = datacontainer.getFieldValue("tbx_NDMonitoringType");
+			String FirmWareVersion = datacontainer.getFieldValue("tbx_NDFirmWareVersion");			
+			String NMSType = datacontainer.getFieldValue("tbx_NDNMSType");
+			String NMSHostName = datacontainer.getFieldValue("tbx_NDNMSHostName");
+			String NMSDescription = datacontainer.getFieldValue("tbx_NDNMSDescription");			
+			String NetworkIdentifier = datacontainer.getFieldValue("tbx_NDNetworkIdentifier");
+			String NetworkName = datacontainer.getFieldValue("tbx_NDNetworkName");
+			
+			String chasisSerialNumField[] = chasisSerialNum.split(":");
+			String actualchasisSerialNum =chasisSerialNumField[1];
+			String serialNumField[] = serialNum.split(":");
+			String actualserialNum =serialNumField[1];
+			String SocketNumField[] = SocketNum.split(":");
+			String actualSocketNum =SocketNumField[1];
+			String HardwareVersionField[] = HardwareVersion.split(":");
+			String actualHardwareVersion =HardwareVersionField[1];
+			String SoftwareVersionField[] = SoftwareVersion.split(":");
+			String actualSoftwareVersion =SoftwareVersionField[1];
+			String IPSubnetMaskField[] = IPSubnetMask.split(":");
+			String actualIPSubnetMask =IPSubnetMaskField[1];
+			String RevisionField[] = Revision.split(":");
+			String actualRevision =RevisionField[1];
+			String DisContinueReasonField[] = DisContinueReason.split(":");
+			String actualDisContinueReason =DisContinueReasonField[1];	
+			String MacAddressField[] = MacAddress.split(":");
+			String actualMacAddress =MacAddressField[1];
+			String SNMPObjectIDField[] = SNMPObjectID.split(":");
+			String actualSNMPObjectID =SNMPObjectIDField[1];
+//			String SNMPPortNumField[] = SNMPPortNum.split(":");
+//			String actualSNMPPortNum =SNMPPortNumField[1];
+//			String MonitoringTypeField[] = MonitoringType.split(":");
+//			String actualMonitoringType =MonitoringTypeField[1];
+			String FirmWareVersionField[] = FirmWareVersion.split(":");
+			String actualFirmWareVersion =FirmWareVersionField[1];
+			String NMSTypeField[] = NMSType.split(":");
+			String actualNMSType =NMSTypeField[1];
+			String NMSHostNameField[] = NMSHostName.split(":");
+			String actualNMSHostName =NMSHostNameField[1];
+			String NMSDescriptionField[] = NMSDescription.split(":");
+			String actualNMSDescription =NMSDescriptionField[1];
+			String NetworkIdentifierField[] = NetworkIdentifier.split(":");
+			String actualNetworkIdentifier =NetworkIdentifierField[1];
+			String NetworkNameField[] = NetworkName.split(":");
+			String actualNetworkName =NetworkNameField[1];
+			
+			
+			Boolean	flag = ExpectedNDchasisSerialNum.contains(actualchasisSerialNum);
+			Assert.assertTrue(flag);
+			flag =ExpectedNDserialNum.contains(actualserialNum);
+			Assert.assertTrue(flag);
+			flag =ExpectedNDSocketNum.contains(actualSocketNum);
+			Assert.assertTrue(flag);
+			flag =ExpectedNDHardwareVersion.contains(actualHardwareVersion);
+			Assert.assertTrue(flag);
+			flag =ExpectedNDSoftwareVersion.contains(actualSoftwareVersion);
+			Assert.assertTrue(flag);
+			flag =ExpectedNDIPSubnetMaskm.contains(actualIPSubnetMask);
+			Assert.assertTrue(flag);
+			flag =ExpectedDisContinueReason.contains(actualDisContinueReason);
+			Assert.assertTrue(flag);
+			flag =ExpectedNDMacAddress.contains(actualMacAddress);
+			Assert.assertTrue(flag);
+			flag =ExpectedNDSNMPObjectID.contains(actualSNMPObjectID);
+			Assert.assertTrue(flag);
+			flag =ExpectedNDRevision.contains(actualRevision);
+			Assert.assertTrue(flag);
+//			flag =ExpectedNDSNMPPortNum.contains(actualSNMPPortNum);
+//			Assert.assertTrue(flag);
+//			flag =ExpectedNDMonitoringTyp.contains(actualMonitoringType);
+//			Assert.assertTrue(flag);
+			flag =ExpectedNDFirmWareVersion.contains(actualFirmWareVersion);
+			Assert.assertTrue(flag);
+			flag =ExpectedNDNMSType.contains(actualNMSType);
+			Assert.assertTrue(flag);
+			flag =ExpectedNDNMSHostName.contains(actualNMSHostName);
+			Assert.assertTrue(flag);
+			flag =ExpectedNDNMSDescription.contains(actualNMSDescription);
+			Assert.assertTrue(flag);
+			flag =ExpectedNDNetworkIdentifier.contains(actualNetworkIdentifier);
+			Assert.assertTrue(flag);
+			flag =ExpectedNDNetworkName.contains(actualNetworkName);
+			Assert.assertTrue(flag);			
+		}
+	
+	@Step
+	public void verifywirecenterCLLILookupFields() throws InterruptedException {
+		boolean flag = actvtnpage.tbx_wireCenteraddress.isDisplayed();
+		Assert.assertTrue("address field is not displayed", flag);
+		flag= actvtnpage.tbx_wireCenterstreetName.isDisplayed();
+		Assert.assertTrue("street name field is not displayed", flag);
+		flag= devcreatepage.ddl_wireCenterstreetType.isPresent();
+		Assert.assertTrue("street type field is not displayed", flag);		
+		flag= devcreatepage.tbx_wireCenterCity.isDisplayed();
+		Assert.assertTrue("city field is not displayed", flag);
+		flag= devcreatepage.tbx_wireCenterstate.isPresent();
+		Assert.assertTrue("state field is not displayed", flag);
+		flag= devcreatepage.tbx_wireCenterzip.isDisplayed();
+		Assert.assertTrue("zip field is not displayed", flag);
+		flag= actvtnpage.tbx_wireCenterbuildingCLLI.isDisplayed();
+		Assert.assertTrue("Building CLLI field is not displayed", flag);
+		flag= devcreatepage.btn_wireCenterLookUp.isDisplayed();
+		Assert.assertTrue("look up button is not displayed", flag);
+		flag= devcreatepage.btn_wireCenterCancel.isDisplayed();
+		Assert.assertTrue("Cancel button is not displayed", flag);
+		commonData.getContainer(actvtnpage.getClass().getSimpleName()).setActualValuesForAllContainers();
+		fillMandatoryFields(actvtnpage, commonData.getContainer(actvtnpage.getClass().getSimpleName()).getContainer("TC39242"));
+		devcreatepage.btn_wireCenterCancel.click();
+		boolean flag1 = devcreatepage.btn_wireclli.isDisplayed();
+		Assert.assertTrue("Cancel button functionality is not working",flag1);
+		System.out.println("Cancel button functionality is working fine");
+		devcreatepage.btn_wireclli.click();
+		fillMandatoryFields(actvtnpage, commonData.getContainer(actvtnpage.getClass().getSimpleName()).getContainer("TC39242"));
+		devcreatepage.btn_wireCenterLookUp.click();
+		flag =devcreatepage.btn_wireCenterLookUp.isDisplayed();
+		Assert.assertTrue("look up button functionality is not working",flag);
+		System.out.println("look up button functionallity is working fine");
+		devcreatepage.lnk_addlcn.click();
+		
+	} 
+	
+	@Step
+	public void verfiy_relatedTabPage(String tab) throws Exception {
+		searchdevicepage.verfiy_relatedTabPage(tab);
+	}
 	
 	
 }
