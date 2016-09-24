@@ -712,5 +712,13 @@ public class OVActivationPage extends OmniVuePage {
 		ddl_devsubType.selectByVisibleText(splitter_option);
 		
 	}
+	
+	public void createform(String type) {	
+		ddl_devType.selectByVisibleText(type);
+		btn_Location_create.click();
+		WebDriverWait wait = new WebDriverWait(getDriver(),30);
+		
+		wait.until(ExpectedConditions.elementToBeClickable(devcreatepage.btn_Create));
+	}
 
 }

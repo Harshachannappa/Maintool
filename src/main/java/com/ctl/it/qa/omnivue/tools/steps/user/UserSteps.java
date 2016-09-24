@@ -979,6 +979,10 @@ public class UserSteps extends OmniVueSteps  {
 		actvtnpage.i_Select_for_the_drop_down_Service_Type_actvtnpage(service_type);		
 	}
 	
+	@Step
+	public void createform(String type){
+		actvtnpage.createform(type);
+	}
 	//Pratim Team Updates--9/23/2016
 	
 	@Step
