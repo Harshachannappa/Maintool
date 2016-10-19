@@ -169,17 +169,104 @@ public class UserSteps extends OmniVueSteps  {
 			}
 			
 				System.out.println(OrderatributesOfPage);
+				for(int i=0;i<OrderatributesOfPage.size();i++){
+				if(OrderatributesOfPage.get(i).contains("V and H coordinates")){
+					throw new Error("V Coordinate is present");
+				} 
+		
+		if (OrderatributesOfPage.get(i).contains("V coordinates:")) {	
+			throw new Error("V Coordinate is present");
+		} else	if (OrderatributesOfPage.get(i).contains("H coordinates")) {
+			throw new Error("V Coordinate is present");				
+		}  else	if (OrderatributesOfPage.get(i).contains("V and H coordinates")) {
+			throw new Error("V and H Coordinate is present");				
+		}	else	if (OrderatributesOfPage.get(i).contains("Service Type*")) {
 			
-			if (OrderatributesOfPage.contains("V coordinates")) {	
-				throw new Error("V Coordinate is present");
-			} else	if (OrderatributesOfPage.contains("H coordinates")) {
-				throw new Error("V Coordinate is present");				
-			}  
+			// Validating the Feature code values for HSI Service type for MLTO
+			
+			orderpage.ddl_serviceType.selectByVisibleText("HSI");
+			Thread.sleep(1000);
+			
+			List<WebElementFacade> mltoHSIfeaturecodelist = orderpage.lbl_featureCodeCollection;
+			ArrayList<String> mltoHSIfeaturecodevalues=new ArrayList<String>();
+			//System.out.println("Step one done");
+			
+			for(int j=0;j<mltoHSIfeaturecodelist.size();j++){
+			
+				mltoHSIfeaturecodevalues.add(j, mltoHSIfeaturecodelist.get(j).getText());			
+				}
+			System.out.println(mltoHSIfeaturecodevalues);
+			
+			for(int k=0;k<mltoHSIfeaturecodevalues.size();k++){
+				//System.out.println(atributesOfPage.get(i));
+				
+				if(mltoHSIfeaturecodevalues.get(k).contains("7325")){
+					System.out.println("HSI Feature codes are all present");
+				}
+				else if(mltoHSIfeaturecodevalues.get(k).contains("1239i")){
+					System.out.println("HSI Feature codes are all present");
+				} else throw new Error("HSI Feature codes are not present");
+				
+			}	
+				
+			
+			// Validating the Feature code values for HSI+PRISM HD Stream & Feature code validation for MLTO
+			
+			orderpage.ddl_serviceType.selectByVisibleText("HSI+PRISM");
+			Thread.sleep(1000);
+			
+					//HD Stream Validation
+			
+			System.out.println(orderpage.ddl_hdStreams.getText());
+			
+			orderpage.ddl_hdStreams.selectByVisibleText("6HD0SD");
+			Thread.sleep(1000);
+			//Feature code validation
+			
+			List<WebElementFacade> mltoPRISMfeaturecodelist = orderpage.lbl_featureCodeCollection;
+			ArrayList<String> mltoPRISMfeaturecodevalues=new ArrayList<String>();
+			//System.out.println("Step one done");
+			
+			for(int j=0;j<mltoPRISMfeaturecodelist.size();j++){
+			
+				mltoPRISMfeaturecodevalues.add(j, mltoPRISMfeaturecodelist.get(j).getText());			
+				}
+			System.out.println(mltoPRISMfeaturecodevalues);
+			
+			for(int k=0;k<mltoPRISMfeaturecodevalues.size();k++){
+				//System.out.println(atributesOfPage.get(i));
+				
+				if(mltoPRISMfeaturecodevalues.get(k).contains("1RTBXN")){
+					System.out.println("HSI+PRISM Feature codes 1RTBXN is present");
+				}
+				else if(mltoPRISMfeaturecodevalues.get(k).contains("7325")){
+					System.out.println("HSI+PRISM Feature codes 7325 is present");
+				} 
+				else if(mltoPRISMfeaturecodevalues.get(k).contains("VAP")){
+					System.out.println("HSI+PRISM Feature codes VAP is present");
+				} 
+				else if(mltoPRISMfeaturecodevalues.get(k).contains("7410N")){
+					System.out.println("HSI+PRISM Feature codes 7410N is present");
+				}
+				else if(mltoPRISMfeaturecodevalues.get(k).contains("1239i")){
+					System.out.println("HSI+PRISM Feature codes 1239i is present");
+				} else throw new Error("HSI Feature codes are not present");
+				
+			}	
+					
+			
+		}	
+		
+		System.out.println("Working as expected");  
 				
 		}
+			}	
 		catch (InterruptedException e) {
 			e.printStackTrace();
 		}
+			
+			
+			
 		}
 	}
 	
@@ -253,7 +340,8 @@ public class UserSteps extends OmniVueSteps  {
 	@Step
 	public void click_searchBtn(String button) throws InterruptedException {
 		actvtnpage.click_searchbtn(button);
-		System.out.println("Second stage");
+		//System.out.println("Second stage");
+		Thread.sleep(5000);
 	}
 	
 	

@@ -58,6 +58,10 @@ public class OVOrderPage extends OmniVuePage {
 	@FindBy(id="upSpeed")
 	public WebElementFacade ddl_upSpeed;
 	
+	@FindBy(id="featureCodeCollection")
+	public List<WebElementFacade> lbl_featureCodeCollection;
+	
+	
 	@FindBy(id="featureCodeRemark")
 	public WebElementFacade tbx_featureCodeRemark;
 	
