@@ -617,6 +617,12 @@ public class OVActivationPage extends OmniVuePage {
 	public WebElementFacade tbx_service_area_name ;
 	
 	
+	//Aparna Sanity Declaration
+	
+	@FindBy(xpath="//label[text()='Service Type ']/following-sibling::select")
+    public WebElementFacade ddl_Search_ServiceType;
+
+	
 	@Override
 	public WebElementFacade getUniqueElementInPage() {
 		

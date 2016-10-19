@@ -106,11 +106,134 @@ public class UserSteps extends OmniVueSteps  {
 	
 	@Step
 	public void fill_order_fields(String field) throws InterruptedException {
-			//fillMandatoryFields(orderpage,get_data_for_page(orderpage).getContainer(field));
+		
+		//String parentwin=devcreatepage.window_switch();	
+	
+		
 		orderpage.btn_serviceaddress.click();
-			Thread.sleep(5000);
+		Thread.sleep(5000);
+		fillMandatoryFields(orderpage,get_data_for_page(orderpage).getContainer("MLTO location address"));
+		orderpage.btn_lookup.click();
+		Thread.sleep(5000);
+		
+		orderpage.lnk_addlcn.click();
+		Thread.sleep(5000);
+		//orderpage.lnk_addlcn.click();
+		//devcreatepage.switch_win(parentwin);
+		//Thread.sleep(5000);
+		
+		
+		
+			fillMandatoryFields(orderpage,get_data_for_page(orderpage).getContainer(field));
+			
 		}
 	
+	@Step
+	public void Createbutton_functionality(){
+		try {
+		devcreatepage.btn_Create.click();		
+		
+			Created_MLTO_Order(orderpage.create_order_successfull_msg());
+			System.out.println("*******************"+orderpage.create_order_successfull_msg());
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+	
+	@Step//reading the successful msg after one device created
+	public void Created_MLTO_Order(String deviceName) throws InterruptedException{
+		 
+		 Thread.sleep(1000);		
+	}
+	
+	@Step
+	public void Createform_attribute_validation(String str1,String str2){
+		if(str2.equals("MLTO")){
+			
+			try
+			{	
+				Thread.sleep(5000);									
+		
+				List<WebElementFacade> Ordercreatelist = devcreatepage.lbl_allXapath;
+				ArrayList<String> OrderatributesOfPage=new ArrayList<String>();
+				//System.out.println("Step one done");
+			
+				for(int j=0;j<Ordercreatelist.size();j++){
+				
+				OrderatributesOfPage.add(j, Ordercreatelist.get(j).getText());
+				
+				//System.out.println("Step Two done");
+				//System.out.println(atributesOfPage.get(j));
+			}
+			
+				System.out.println(OrderatributesOfPage);
+			
+			if (OrderatributesOfPage.contains("V coordinates")) {	
+				throw new Error("V Coordinate is present");
+			} else	if (OrderatributesOfPage.contains("H coordinates")) {
+				throw new Error("V Coordinate is present");				
+			}  
+				
+		}
+		catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		}
+	}
+	
+	
+	@Step
+	public void action_button_MLTO_Search(String action){
+		
+	}
+	
+	@Step
+	public void Searchform_attribute_validation(String str1,String str2){
+		if(str2.equals("MLTO")){
+			try
+			{	
+				Thread.sleep(5000);									
+		
+				List<WebElementFacade> Ordercreatelist = orderpage.lbl_SearchpageOrderxpath;
+				ArrayList<String> OrderatributesOfPage=new ArrayList<String>();
+				//System.out.println("Step one done");
+			
+				for(int j=0;j<Ordercreatelist.size();j++){
+				
+				OrderatributesOfPage.add(j, Ordercreatelist.get(j).getText());
+				
+				//System.out.println("Step Two done");
+				//System.out.println(atributesOfPage.get(j));
+			}
+			
+				System.out.println(OrderatributesOfPage);
+				for(int i=0;i<OrderatributesOfPage.size();i++){
+					//System.out.println(atributesOfPage.get(i));
+					
+					if(OrderatributesOfPage.get(i).contains("V and H coordinates")){
+						throw new Error("V Coordinate is present");
+					} 
+			
+			if (OrderatributesOfPage.get(i).contains("V coordinates:")) {	
+				throw new Error("V Coordinate is present");
+			} else	if (OrderatributesOfPage.get(i).contains("H coordinates")) {
+				throw new Error("V Coordinate is present");				
+			}  else	if (OrderatributesOfPage.get(i).contains("V and H coordinates")) {
+				throw new Error("V and H Coordinate is present");				
+			}				
+			System.out.println("Working as expected");
+			
+			
+		
+				}
+			}
+		catch (InterruptedException e) {
+			e.printStackTrace();
+		}		
+		}
+	}
 	
 	@Step
 	public void Usability_validation(String serviceType,String serviceCapabilityType) throws InterruptedException {
@@ -625,6 +748,12 @@ public class UserSteps extends OmniVueSteps  {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+	
+	@Step   
+	public void createtabselect(String type){
+		actvtnpage.ddl_createType.selectByVisibleText(type);
+		actvtnpage.btn_create_subcform.click();
 	}
 	
 	@Step

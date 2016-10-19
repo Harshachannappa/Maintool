@@ -46,13 +46,17 @@ public class OVOrderPage extends OmniVuePage {
 	public WebElementFacade tbx_dtn;
 	
 	@FindBy(id="serviceType")
-	public WebElementFacade tbx_serviceType;
+	public WebElementFacade ddl_serviceType;
+	
+	@FindBy(id="hdStreams")
+	public WebElementFacade ddl_hdStreams;
+	
 	
 	@FindBy(id="downSpeed")
-	public WebElementFacade tbx_downSpeed;
+	public WebElementFacade ddl_downSpeed;
 	
 	@FindBy(id="upSpeed")
-	public WebElementFacade tbx_upSpeed;
+	public WebElementFacade ddl_upSpeed;
 	
 	@FindBy(id="featureCodeRemark")
 	public WebElementFacade tbx_featureCodeRemark;
@@ -69,11 +73,43 @@ public class OVOrderPage extends OmniVuePage {
 	@FindBy(id="dispatchRemark")
 	public WebElementFacade tbx_dispatchRemark;
 	
+	//				Need to compare with Device Location search & remove if it's already available
+	
+	@FindBy(id="address")
+	public WebElementFacade tbx_addressno;
+	
+	@FindBy(id="streetName")
+	public WebElementFacade tbx_streetName;
+	
+	@FindBy(id="city")
+	public WebElementFacade tbx_city;
+	
+	@FindBy(id="state")
+	public WebElementFacade ddl_state;
+	
+	@FindBy(xpath=".//*[@ng-click='lookUpCall()']")
+	public WebElementFacade btn_lookup;
+	
+	// End of it
+	
+	//@FindBy(xpath="//div[starts-with(@id,'row0jqxGrid')]/div[1]/div/a")
+	@FindBy(xpath=".//*[@ng-click='lookupGridSettings.selLukupValue(0)']")
+	public WebElementFacade lnk_addlcn;
+	
+	@FindBy(xpath=".//*[@class='order-detail-group ng-scope']/div/div")	
+	public List<WebElementFacade> lbl_SearchpageOrderxpath;
+	
+	
 	@Override
 	public WebElementFacade getUniqueElementInPage() {
 		
 		return tbx_orderno;
 	}
 	
-	
+	public String create_order_successfull_msg() {
+		String message=devcreatepage.success_alert.getText();
+		String msg = message.substring(1, message.length());
+		 System.out.println(msg);
+		return msg;
+		}
 }
