@@ -51,6 +51,9 @@ public class OVOrderPage extends OmniVuePage {
 	@FindBy(id="hdStreams")
 	public WebElementFacade ddl_hdStreams;
 	
+	@FindBy(id="hdStreams")
+	public List<WebElementFacade> ddl_hdStreams1;
+	
 	
 	@FindBy(id="downSpeed")
 	public WebElementFacade ddl_downSpeed;
@@ -103,6 +106,24 @@ public class OVOrderPage extends OmniVuePage {
 	@FindBy(xpath=".//*[@class='order-detail-group ng-scope']/div/div")	
 	public List<WebElementFacade> lbl_SearchpageOrderxpath;
 	
+	//@FindBy(xpath=".//*[@class='control-label ng-binding']")	
+	@FindBy(xpath=".//*[@class='order-detail-group']/div[@ng-repeat='row in editRows']")
+	public List<WebElementFacade> lbl_EditpageOrderxpath;
+	
+	//Action Button check
+	
+	@FindBy(xpath=".//*[@value='Edit Order']")
+	public WebElementFacade btn_editmltoorder;
+	
+	@FindBy(xpath=".//*[@value='Cancel Order']")
+	public WebElementFacade btn_cancelmltoorder;
+	
+	
+	//Service Area check
+	
+	@FindBy(xpath=".//*[text()='Service Address:']/following-sibling::label[1]")
+	public WebElementFacade lbl_orderserviceaddress;
+	
 	
 	@Override
 	public WebElementFacade getUniqueElementInPage() {
@@ -116,4 +137,19 @@ public class OVOrderPage extends OmniVuePage {
 		 System.out.println(msg);
 		return msg;
 		}
+	
+	public void action_button_MLTO_Search(String action) throws InterruptedException{
+		if(action.equals("Edit")){
+			btn_editmltoorder.click();
+		}
+		Thread.sleep(5000);
+	}
+	
+	public void buttonvisibilitycheck(String button){
+		if(button.equals("EDIT")){
+			btn_editmltoorder.isEnabled();
+		} else if(button.equals("CANCEL")){
+			btn_cancelmltoorder.isEnabled();
+		} else throw new Error("Buttons are disabled");
+	}
 }

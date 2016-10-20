@@ -170,17 +170,17 @@ public class UserSteps extends OmniVueSteps  {
 			
 				System.out.println(OrderatributesOfPage);
 				for(int i=0;i<OrderatributesOfPage.size();i++){
-				if(OrderatributesOfPage.get(i).contains("V and H coordinates")){
+				if(OrderatributesOfPage.get(i).equals("V and H coordinates")){
 					throw new Error("V Coordinate is present");
 				} 
 		
-		if (OrderatributesOfPage.get(i).contains("V coordinates:")) {	
+				else if (OrderatributesOfPage.get(i).equals("V coordinates:")) {	
 			throw new Error("V Coordinate is present");
-		} else	if (OrderatributesOfPage.get(i).contains("H coordinates")) {
+		} else	if (OrderatributesOfPage.get(i).equals("H coordinates")) {
 			throw new Error("V Coordinate is present");				
-		}  else	if (OrderatributesOfPage.get(i).contains("V and H coordinates")) {
+		}  else	if (OrderatributesOfPage.get(i).equals("V and H coordinates")) {
 			throw new Error("V and H Coordinate is present");				
-		}	else	if (OrderatributesOfPage.get(i).contains("Service Type*")) {
+		}	else	if (OrderatributesOfPage.get(i).equals("Service Type*")) {
 			
 			// Validating the Feature code values for HSI Service type for MLTO
 			
@@ -202,10 +202,9 @@ public class UserSteps extends OmniVueSteps  {
 				
 				if(mltoHSIfeaturecodevalues.get(k).contains("7325")){
 					System.out.println("HSI Feature codes are all present");
-				}
-				else if(mltoHSIfeaturecodevalues.get(k).contains("1239i")){
+				 if(mltoHSIfeaturecodevalues.get(k).contains("1239i")){
 					System.out.println("HSI Feature codes are all present");
-				} else throw new Error("HSI Feature codes are not present");
+				}} else throw new Error("HSI Feature codes are not present"+mltoHSIfeaturecodevalues.get(k));
 				
 			}	
 				
@@ -217,10 +216,33 @@ public class UserSteps extends OmniVueSteps  {
 			
 					//HD Stream Validation
 			
-			System.out.println(orderpage.ddl_hdStreams.getText());
+			List<WebElementFacade> mltoHDStreamlist = orderpage.ddl_hdStreams1;
+			ArrayList<String> mltoHDStreamvalues=new ArrayList<String>();
+			
+			for(int j=0;j<mltoHDStreamlist.size();j++){
+				
+				mltoHDStreamvalues.add(j, mltoHDStreamlist.get(j).getText());			
+				}
+			System.out.println(mltoHDStreamvalues);
+			
+			for(int k=0;k<mltoHDStreamvalues.size();k++){
+				
+				if(mltoHDStreamvalues.get(k).contains("6HD0SD")){
+					System.out.println("HD Stream code 6HD0SD is present");				
+				 if(mltoHDStreamvalues.get(k).contains("4HD0SD"))
+					System.out.println("HD Stream code 4HD0SD is present");				 
+				 if(mltoHDStreamvalues.get(k).contains("3HD1SD"))
+					System.out.println("HD Stream code 3HD1SD is present");				
+				 if(mltoHDStreamvalues.get(k).contains("0HD4SD"))
+					System.out.println("HD Stream code 0HD4SD is present");
+				} else throw new Error("HD Stream codes are not present"+mltoHDStreamvalues.get(k));
+				
+			}
 			
 			orderpage.ddl_hdStreams.selectByVisibleText("6HD0SD");
 			Thread.sleep(1000);
+			
+			
 			//Feature code validation
 			
 			List<WebElementFacade> mltoPRISMfeaturecodelist = orderpage.lbl_featureCodeCollection;
@@ -238,19 +260,19 @@ public class UserSteps extends OmniVueSteps  {
 				
 				if(mltoPRISMfeaturecodevalues.get(k).contains("1RTBXN")){
 					System.out.println("HSI+PRISM Feature codes 1RTBXN is present");
-				}
-				else if(mltoPRISMfeaturecodevalues.get(k).contains("7325")){
+				
+				 if(mltoPRISMfeaturecodevalues.get(k).contains("7325"))
 					System.out.println("HSI+PRISM Feature codes 7325 is present");
-				} 
-				else if(mltoPRISMfeaturecodevalues.get(k).contains("VAP")){
+				
+				 if(mltoPRISMfeaturecodevalues.get(k).contains("VAP"))
 					System.out.println("HSI+PRISM Feature codes VAP is present");
-				} 
-				else if(mltoPRISMfeaturecodevalues.get(k).contains("7410N")){
+				
+				 if(mltoPRISMfeaturecodevalues.get(k).contains("7410N"))
 					System.out.println("HSI+PRISM Feature codes 7410N is present");
-				}
-				else if(mltoPRISMfeaturecodevalues.get(k).contains("1239i")){
+			
+				 if(mltoPRISMfeaturecodevalues.get(k).contains("1239i"))
 					System.out.println("HSI+PRISM Feature codes 1239i is present");
-				} else throw new Error("HSI Feature codes are not present");
+				} else throw new Error("HSI Feature codes are not present"+mltoPRISMfeaturecodevalues.get(k));
 				
 			}	
 					
@@ -272,8 +294,8 @@ public class UserSteps extends OmniVueSteps  {
 	
 	
 	@Step
-	public void action_button_MLTO_Search(String action){
-		
+	public void action_button_MLTO_Search(String action) throws InterruptedException{
+		orderpage.action_button_MLTO_Search(action);
 	}
 	
 	@Step
@@ -299,17 +321,21 @@ public class UserSteps extends OmniVueSteps  {
 				for(int i=0;i<OrderatributesOfPage.size();i++){
 					//System.out.println(atributesOfPage.get(i));
 					
-					if(OrderatributesOfPage.get(i).contains("V and H coordinates")){
+					if(OrderatributesOfPage.get(i).equals("V and H coordinates")){
 						throw new Error("V Coordinate is present");
 					} 
 			
-			if (OrderatributesOfPage.get(i).contains("V coordinates:")) {	
+			if (OrderatributesOfPage.get(i).equals("V coordinates:")) {	
 				throw new Error("V Coordinate is present");
-			} else	if (OrderatributesOfPage.get(i).contains("H coordinates")) {
+			} else	if (OrderatributesOfPage.get(i).equals("H coordinates")) {
 				throw new Error("V Coordinate is present");				
-			}  else	if (OrderatributesOfPage.get(i).contains("V and H coordinates")) {
+			}  else	if (OrderatributesOfPage.get(i).equals("V and H coordinates")) {
 				throw new Error("V and H Coordinate is present");				
-			}				
+			}	else if (OrderatributesOfPage.get(i).equals("Service Address:")) {
+				if(orderpage.lbl_orderserviceaddress.getText().equals(null)){
+					throw new Error("Service address is not displayed");
+				}
+			}			
 			System.out.println("Working as expected");
 			
 			
@@ -320,6 +346,61 @@ public class UserSteps extends OmniVueSteps  {
 			e.printStackTrace();
 		}		
 		}
+	}
+	
+	
+	@Step
+	public void Editform_attribute_validation(String str1,String str2){
+		if(str2.equals("MLTO")){
+			try
+			{	
+				Thread.sleep(10000);									
+		
+				List<WebElementFacade> Ordereditlist = orderpage.lbl_EditpageOrderxpath;
+				ArrayList<String> OrderatributesOfeditPage=new ArrayList<String>();
+				//System.out.println("Step one done");
+				//System.out.println(Ordercreatelist.);
+				for(int j=0;j<Ordereditlist.size();j++){
+				
+					OrderatributesOfeditPage.add(j, Ordereditlist.get(j).getText());
+				
+				//System.out.println("Step Two done");
+				System.out.println(OrderatributesOfeditPage.get(j));
+			}
+			
+				System.out.println(OrderatributesOfeditPage);
+				for(int i=0;i<OrderatributesOfeditPage.size();i++){
+					//System.out.println(atributesOfPage.get(i));
+					
+					if(OrderatributesOfeditPage.get(i).equals("V and H coordinates")){
+						throw new Error("V Coordinate is present");
+					} 
+			
+			if (OrderatributesOfeditPage.get(i).equals("V coordinates:")) {	
+				throw new Error("V Coordinate is present");
+			} else	if (OrderatributesOfeditPage.get(i).equals("H coordinates")) {
+				throw new Error("V Coordinate is present");				
+			}  else	if (OrderatributesOfeditPage.get(i).equals("V and H coordinates")) {
+				throw new Error("V and H Coordinate is present");				
+			}	else	if (OrderatributesOfeditPage.get(i).equals("V and H coordinates")) {
+				
+			}
+			System.out.println("Working as expected");
+			
+			
+		
+				}
+			}
+		catch (InterruptedException e) {
+			e.printStackTrace();
+		}		
+		}
+	}
+	
+	@Step
+	public void Orderbutton_validation(String btn){
+		orderpage.buttonvisibilitycheck(btn);
+		
 	}
 	
 	@Step
@@ -341,7 +422,7 @@ public class UserSteps extends OmniVueSteps  {
 	public void click_searchBtn(String button) throws InterruptedException {
 		actvtnpage.click_searchbtn(button);
 		//System.out.println("Second stage");
-		Thread.sleep(5000);
+		Thread.sleep(10000);
 	}
 	
 	

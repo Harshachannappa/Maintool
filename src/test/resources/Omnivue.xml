@@ -14,6 +14,14 @@
 					<field name="username_tbx" value="ldtst23" type="mandatory" />
 					<field name="pwd_tbx" value="Qwest2010" type="mandatory" />
 				</container>
+				<container name="ValidAdmin">
+					<field name="username_tbx" value="ldtst23" type="mandatory" />
+					<field name="pwd_tbx" value="Qwest2010" type="mandatory" />
+				</container>
+				<container name="ValidAdmin-har">
+					<field name="username_tbx" value="AB52523" type="mandatory" />
+					<field name="pwd_tbx" value="Aug-2016" type="mandatory" />
+				</container>
 			</container>				
 		</container>				
 		<container name="E2E">
@@ -41,7 +49,7 @@
                		<field name="ddl_searchType" value="wait-1:Inventory" type="mandatory"></field>
                		<field name="ddl_invntryType" value="wait-1:Device" type="mandatory"></field>
                		<field name="tbx_deviceName" value="wait-1:DSLOVC44001-010101.01A" type="mandatory"></field>
-          		</container>
+          		</container>          		
           	<container name="Splitter">
 	               <field name="ddl_searchType" value="wait-1:Inventory" type="mandatory"></field>
 	               <field name="ddl_invntryType" value="wait-1:Device" type="mandatory"></field>
@@ -159,6 +167,11 @@
 		               <field name="tbx_ctagtxtfield2" value="wait-2:4095" type="mandatory"></field>               
 		          </container>		          
 			 </container>
+			 <container name="GPON-OLT Devie-TC75816">
+          			<field name="ddl_searchType" value="wait-1:Inventory" type="mandatory"></field>
+               		<field name="ddl_invntryType" value="wait-1:Device" type="mandatory"></field>
+               		<field name="tbx_deviceName" value="wait-1:TESTYYYY01G-CA712-ONT" type="mandatory"></field>
+          	</container>
 			 <container name="TC44383-Location">
                <field name="ddl_searchType" value="wait-1:Inventory" type="mandatory"></field>
                <field name="ddl_invntryType" value="wait-1:Location" type="mandatory"></field>
