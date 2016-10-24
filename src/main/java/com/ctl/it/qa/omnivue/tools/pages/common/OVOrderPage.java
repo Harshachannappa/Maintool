@@ -125,6 +125,18 @@ public class OVOrderPage extends OmniVuePage {
 	public WebElementFacade lbl_orderserviceaddress;
 	
 	
+	//Search Remarks section
+	
+	@FindBy(xpath=".//*[text()='Remarks:']/following-sibling::label")
+	public WebElementFacade lbl_locnremarks;
+	
+	@FindBy(xpath=".//*[text()='Feature Code Remark:']/following-sibling::label")
+	public WebElementFacade lbl_featurecoderemark;
+	
+	@FindBy(xpath=".//*[text()='Remark:']/following-sibling::label")
+	public WebElementFacade lbl_dispatchremark;
+	
+	
 	@Override
 	public WebElementFacade getUniqueElementInPage() {
 		
@@ -145,11 +157,31 @@ public class OVOrderPage extends OmniVuePage {
 		Thread.sleep(5000);
 	}
 	
-	public void buttonvisibilitycheck(String button){
-		if(button.equals("EDIT")){
-			btn_editmltoorder.isEnabled();
-		} else if(button.equals("CANCEL")){
+	public void buttonvisibilitycheck(String button,String state){
+		if(button.equals("EDIT")){	
+			if(state.equals("Enabled")){
+			if(!btn_editmltoorder.isEnabled()){
+				throw new Error("Edit Buttons are disabled for Admin role");
+			}
+			} else if(state.equals("Disabled")){
+				if(btn_editmltoorder.isEnabled()){
+					throw new Error("Edit Buttons are Enabled for User role");
+				}
+				}  
+		} 
+		
+		if(button.equals("CANCEL")){
 			btn_cancelmltoorder.isEnabled();
-		} else throw new Error("Buttons are disabled");
+			if(state.equals("Enabled")){
+				if(!btn_cancelmltoorder.isEnabled()){				
+				  throw new Error("Cancel Buttons are disabled for Admin role");
+				}				 
+			}
+				if(state.equals("Disabled")){
+					if(btn_cancelmltoorder.isEnabled()){
+						throw new Error("Cancel Buttons are Enabled for User role");
+					}
+					}  
+			} 
 	}
 }

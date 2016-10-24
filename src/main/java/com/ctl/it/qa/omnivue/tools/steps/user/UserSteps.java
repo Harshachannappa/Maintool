@@ -20,6 +20,8 @@ import com.ctl.it.qa.omnivue.tools.pages.common.OVAssociatedModServicesPage;
 import com.ctl.it.qa.omnivue.tools.pages.common.OVAssociatedServicesPage;
 import com.ctl.it.qa.omnivue.tools.pages.common.OVContactSearchDetailsPage;
 import com.ctl.it.qa.omnivue.tools.pages.common.OVCreateDevicePage;
+import com.ctl.it.qa.omnivue.tools.pages.common.OVCreateLocationPage;
+import com.ctl.it.qa.omnivue.tools.pages.common.OVCreateServicePage;
 import com.ctl.it.qa.omnivue.tools.pages.common.OVCreateTopologyPage;
 import com.ctl.it.qa.omnivue.tools.pages.common.OVCreateTransportPathPage;
 import com.ctl.it.qa.omnivue.tools.pages.common.OVDeviceLookupPage;
@@ -54,9 +56,12 @@ public class UserSteps extends OmniVueSteps  {
 	OVAssociatedModServicesPage modassocservicespage;
 	OVCreateDevicePage devcreatepage;
 	OVOrderPage orderpage;
+	OVCreateServicePage servicecreatepage ;
+	OVCreateLocationPage createlocationpage;
+	
 	//OVCreateLocationPage locpage;
 	
-	OVLocationDetailsPage ovldp; 
+	OVLocationDetailsPage locationsearchpage; 
 	OvSearchLinkdetailspage ovsearchlink; 
 	 OVContactSearchDetailsPage ovcsdp;
 	 
@@ -334,9 +339,21 @@ public class UserSteps extends OmniVueSteps  {
 			}	else if (OrderatributesOfPage.get(i).equals("Service Address:")) {
 				if(orderpage.lbl_orderserviceaddress.getText().equals(null)){
 					throw new Error("Service address is not displayed");
-				}
+				} System.out.println(OrderatributesOfPage.get(i)+"Service address details exists");	
+			} else	if (OrderatributesOfPage.get(i).equals("Remarks:")) {
+				if(orderpage.lbl_locnremarks.getText().equals(null)){
+					throw new Error("Location remarks is not displayed");
+				}	System.out.println(OrderatributesOfPage.get(i)+"Feature code Remark doesnt exists");			
+			} else	if (OrderatributesOfPage.get(i).equals("Feature Code Remark:")) {
+				if(orderpage.lbl_featurecoderemark.getText().equals(null)){
+					throw new Error("Service address is not displayed");
+				}	System.out.println(OrderatributesOfPage.get(i)+"Feature code Remark doesnt exists");			
+			} else	if (OrderatributesOfPage.get(i).equals("Remark:")) {
+				if(orderpage.lbl_dispatchremark.getText().equals(null)){
+					throw new Error("Dispatch Remark is not displayed");
+				}	System.out.println(OrderatributesOfPage.get(i)+"Dispatch Remark doesnt exists");			
 			}			
-			System.out.println("Working as expected");
+			System.out.println("Working as expected"+OrderatributesOfPage.get(i));
 			
 			
 		
@@ -398,8 +415,20 @@ public class UserSteps extends OmniVueSteps  {
 	}
 	
 	@Step
-	public void Orderbutton_validation(String btn){
-		orderpage.buttonvisibilitycheck(btn);
+	public void Orderbutton_validation(String btn,String state){
+		orderpage.buttonvisibilitycheck(btn,state);
+		
+	}
+	
+	
+	@Step
+	public void Serach_button_actions(String btn){
+		try {
+			devicelookuppage.click_devicelookupeditbtn();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 	}
 	
@@ -1130,6 +1159,8 @@ public class UserSteps extends OmniVueSteps  {
 		servicedetailspage.validate_subscriberLookupPage();		
 	}
 	
+	
+	
 	//End of search 
 	
 	//Create Part	Startes from Here
@@ -1303,6 +1334,11 @@ public class UserSteps extends OmniVueSteps  {
 		actvtnpage.i_Select_for_the_drop_down_Service_Type_actvtnpage(service_type);		
 	}
 	
+	@Step
+	public void fill_fields_service(String field){
+		
+		fillMandatoryFields(servicecreatepage,get_data_for_page(servicecreatepage).getContainer(field));
+	}
 	//Pratim Team Updates--9/23/2016
 	
 	@Step
@@ -1732,8 +1768,8 @@ public class UserSteps extends OmniVueSteps  {
 		//TC39225
 		public void	verify_Addsubbtn()
 		{
-			shouldExist(ovldp);
-			ovldp.Addsubbtnverify();
+			shouldExist(locationsearchpage);
+			locationsearchpage.Addsubbtnverify();
 			
 		} 
 		
@@ -2077,4 +2113,26 @@ public class UserSteps extends OmniVueSteps  {
 						System.out.println("pass");
 					} else throw new Error("fail");
 						}
+				
+				@Step
+				public void fill_fields_create_location(String field){
+					
+					fillMandatoryFields(createlocationpage,get_data_for_page(createlocationpage).getContainer(field));
+				}
+				
+				@Step
+				public void location_role_selection(String LRole,String LRoleType){
+					createlocationpage.location_role_selection(LRole,LRoleType);
+				}
+				
+				@Step
+				public void fill_fields_locationsrch(String field) throws InterruptedException{
+				
+					//Thread.sleep(5000);
+					//locationsearchpage.btn_Search.click();
+					
+					fillMandatoryFields(locationsearchpage,get_data_for_page(locationsearchpage).getContainer(field)) ;
+					
+				}
+					
 }

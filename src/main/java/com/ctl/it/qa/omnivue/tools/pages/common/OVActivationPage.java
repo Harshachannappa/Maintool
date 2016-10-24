@@ -622,7 +622,22 @@ public class OVActivationPage extends OmniVuePage {
 	@FindBy(xpath="//label[text()='Service Type ']/following-sibling::select")
     public WebElementFacade ddl_Search_ServiceType;
 
+	@FindBy(xpath = "//*[@ng-show='showLocationType']/select")
+	public WebElementFacade ddl_LocationType;
 	
+	//click on create form to view the success message
+	@FindBy(xpath=".//*[@id='mainTab']/div/ul/li[1]/a/tab-heading")
+	public WebElementFacade tab_Back_2_AddressRangeForm;
+			
+			
+	// success message
+	@FindBy(xpath=".//*[@id='0']/ng-include/div/div[1]")
+	public WebElementFacade lbl_success_message_AddressRangeForm;
+			
+	
+	@FindBy (id = "invAdvanceSearch")
+	public WebElementFacade lnk_Advanced_Search ;
+			
 	@Override
 	public WebElementFacade getUniqueElementInPage() {
 		

@@ -45,8 +45,11 @@ public class OVDeviceLookupPage extends OmniVuePage {
 	}
 	
 	public void click_devicelookupeditbtn() throws Exception {
+		
 		btn_editInDeviceLookup.click();
+		
 		Thread.sleep(5000);
+		
 	}
 	
 	public void click_circuitparameter() throws Exception {
