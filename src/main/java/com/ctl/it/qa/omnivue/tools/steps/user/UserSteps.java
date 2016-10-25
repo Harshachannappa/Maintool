@@ -60,7 +60,7 @@ public class UserSteps extends OmniVueSteps  {
 	OVCreateServicePage servicecreatepage ;
 	OVCreateLocationPage createlocationpage;
 	OVCreateCircuitPage createcircuitpage ;
-	
+	 
 	
 	//OVCreateLocationPage locpage;
 	
@@ -371,7 +371,33 @@ public class UserSteps extends OmniVueSteps  {
 	
 	@Step
 	public void Editform_attribute_validation(String str1,String str2){
-		if(str2.equals("MLTO")){
+		
+		if(str2.equals("OLT Device")){
+			
+			List<WebElementFacade> Deviceeditlist = searchdevicepage.lbl_Editdevicepage;
+			ArrayList<String> DeviceatributesOfeditPage=new ArrayList<String>();
+			//System.out.println("Step one done");
+			//System.out.println(Ordercreatelist.);
+			for(int j=0;j<Deviceeditlist.size();j++){
+			
+				DeviceatributesOfeditPage.add(j, Deviceeditlist.get(j).getText());
+			
+			//System.out.println("Step Two done");
+			System.out.println(DeviceatributesOfeditPage.get(j));
+		}
+		
+			System.out.println(DeviceatributesOfeditPage);
+			for(int i=0;i<DeviceatributesOfeditPage.size();i++){
+				//System.out.println(atributesOfPage.get(i));
+				
+				if(DeviceatributesOfeditPage.get(i).equals("Max Subscriber Bandwidth*")){
+					System.out.println("Max Subscriber Bandwidth* is present"+DeviceatributesOfeditPage.get(i));
+					searchdevicepage.tbx_maxsubscbandwidth.sendKeys("500000");
+				}
+			}
+		}
+		
+	else if(str2.equals("MLTO")){
 			try
 			{	
 				Thread.sleep(10000);									

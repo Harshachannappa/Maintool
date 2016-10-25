@@ -647,8 +647,8 @@
             		</container>
             		<container name="Subscriberdata">
           		 		<field name="tbx_subscriber" value="wait-1:BRASSUB01" type="mandatory"></field>
-              	 		<field name="ddl_subtype" value="wait-1:INTERNAL" type="mandatory"></field>
-              	 		<field name="tbx_subid" value="wait-1:A0051" type="mandatory"></field>                 	 		 
+              	 		<field name="ddl_subtype" value="wait-1:" type="mandatory"></field>
+              	 		<field name="tbx_subid" value="wait-1:" type="mandatory"></field>                 	 		 
             		</container>             		
             	</container>
             	<container name="US48525-TC53733">
