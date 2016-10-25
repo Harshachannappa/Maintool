@@ -19,6 +19,7 @@ import com.ctl.it.qa.omnivue.tools.pages.common.OVActivationPage;
 import com.ctl.it.qa.omnivue.tools.pages.common.OVAssociatedModServicesPage;
 import com.ctl.it.qa.omnivue.tools.pages.common.OVAssociatedServicesPage;
 import com.ctl.it.qa.omnivue.tools.pages.common.OVContactSearchDetailsPage;
+import com.ctl.it.qa.omnivue.tools.pages.common.OVCreateCircuitPage;
 import com.ctl.it.qa.omnivue.tools.pages.common.OVCreateDevicePage;
 import com.ctl.it.qa.omnivue.tools.pages.common.OVCreateLocationPage;
 import com.ctl.it.qa.omnivue.tools.pages.common.OVCreateServicePage;
@@ -58,6 +59,8 @@ public class UserSteps extends OmniVueSteps  {
 	OVOrderPage orderpage;
 	OVCreateServicePage servicecreatepage ;
 	OVCreateLocationPage createlocationpage;
+	OVCreateCircuitPage createcircuitpage ;
+	
 	
 	//OVCreateLocationPage locpage;
 	
@@ -800,6 +803,16 @@ public class UserSteps extends OmniVueSteps  {
 					devcreatepage.btn_lookUp.click();//Rework
 					Thread.sleep(5000);
 					devcreatepage.switch_win(parentwin);
+				}
+				
+				else if(atributesOfPage.get(i).equals("Subscriber Name*")){
+					servicecreatepage.btn_subscriberlookupicon.click();
+					servicecreatepage.tbx_subcriber_name_window.sendKeys("TEST - JANET");
+					devcreatepage.btn_lookup_window.click();
+					
+					Thread.sleep(5000);
+					
+					servicecreatepage.lnk_subcribername.click();
 				}
 				
 				else if(atributesOfPage.get(i).equals("Wire Center CLLI*")){
@@ -2134,5 +2147,20 @@ public class UserSteps extends OmniVueSteps  {
 					fillMandatoryFields(locationsearchpage,get_data_for_page(locationsearchpage).getContainer(field)) ;
 					
 				}
+				
+				
+				@Step
+				public void fill_fields_create_Circuit(String field){
+					
+					fillMandatoryFields(createcircuitpage,get_data_for_page(createcircuitpage).getContainer(field));
+				}
+				
+				@Step
+				public void fill_fields_create_Device(String field){
+					
+					fillMandatoryFields(devcreatepage,get_data_for_page(devcreatepage).getContainer(field));
+				}
+				
+				
 					
 }

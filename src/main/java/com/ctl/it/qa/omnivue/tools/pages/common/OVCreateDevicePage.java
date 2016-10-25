@@ -366,6 +366,38 @@ public class OVCreateDevicePage extends OmniVuePage {
 		@FindBy(xpath="(//button[text()='Cancel'])[1]")
 		public WebElementFacade btn_wireCenterCancel;
 		
+		// Start of Location Address Details lookup
+		
+		@FindBy(id = "loclkp")
+		public WebElementFacade btn_Locationlookup ;
+
+		@FindBy(xpath = ".//*[@title='CLLI Lookup']/div[2]/div/div[2]/div[3]/div[1]/input")
+		public WebElementFacade tbx_address ; 
+
+		@FindBy(xpath = "//*[@title='CLLI Lookup']/div[2]/div/div[2]/div[3]/div[2]/input")
+		public WebElementFacade tbx_streetname ;
+
+		@FindBy(xpath = "//*[@title='CLLI Lookup']/div[2]/div/div[2]/div[4]/div[4]/div/input")
+		public WebElementFacade tbx_Building_CLLi ;
+
+		@FindBy(xpath = "//*[@title='CLLI Lookup']/div[2]/div/div[2]/div[5]/button[text()='Look Up']")
+		public WebElementFacade btn_lookup ;
+		
+		@FindBy(id = "locationAddress")
+		public WebElementFacade tbx_location_address ;
+		
+		@FindBy(xpath = "//*[@ng-click='lookupGridSettings.selLukupValue(1)']")
+		public WebElementFacade lnk_address ;
+
+		
+
+		
+
+// End of Location Address section details
+		
+		@FindBy(xpath = "//*[@value='LookUp' and @ng-click='lookUp()']")
+		public WebElementFacade btn_lookup_window ;
+
 	@Override
 	public WebElementFacade getUniqueElementInPage() {
 		// TODO Auto-generated method stub

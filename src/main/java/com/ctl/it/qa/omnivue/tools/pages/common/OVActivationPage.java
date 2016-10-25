@@ -637,6 +637,19 @@ public class OVActivationPage extends OmniVuePage {
 	
 	@FindBy (id = "invAdvanceSearch")
 	public WebElementFacade lnk_Advanced_Search ;
+	
+	
+	@FindBy(xpath = ".//*[@ng-show='showCircuitType']/select")
+	public WebElementFacade ddl_CircuitType_Createtab ;
+	
+	@FindBy(id = "functionalStatus")
+	public WebElementFacade ddl_functional_status ;
+
+	@FindBy(id = "AFFILIATE_OWNER")
+	public WebElementFacade ddl_Affiliate_Owner ;
+
+	@FindBy(id = "MONITORING_TYPE")
+	public WebElementFacade tbx_monitoring_type ;
 			
 	@Override
 	public WebElementFacade getUniqueElementInPage() {

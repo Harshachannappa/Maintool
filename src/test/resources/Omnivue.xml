@@ -834,7 +834,46 @@
 	              	 	<field name="tbx_buildingclli" value="wait-1:BTNDIAUT" type="mandatory"></field>
           			</container> 
           		</container> 
+          		
           <!-- 										END									 --> 
+          
+          	<container name="US77284-TC96978">
+					<field name="ddl_IsDiverse" value="wait-1:No" type="mandatory"></field>
+               		<field name="ddl_functional_status" value="wait-1:Not Specified" type="mandatory"></field>
+               		<field name="ddl_Affiliate_Owner" value="wait-1:LOCAL" type="mandatory"></field>
+					<field name="tbx_monitoring_type" value="wait-2:Role" type="mandatory"></field>
+               		<field name="tbx_power_supply" value="wait-1:5" type="mandatory"></field>
+               		<field name="ddl_indoor_or_outdoor" value="wait-1:Indoor" type="mandatory"></field>
+					<field name="ddl_self_or_tech" value="wait-1:Self Install" type="mandatory"></field>
+					<field name="tbx_Ronta_ID" value="wait-2:235" type="mandatory"></field>
+               		<field name="ddl_Aerial_or_Buried" value="wait-1:Aerial" type="mandatory"></field>
+					<field name="ddl_Build_or_Provisioning" value="wait-2:Infrastructure Build" type="mandatory"></field>
+			</container>
+			<container name="TCS1452">
+				<container name="Locationdata">
+					<field name="tbx_addNo" value="wait-1:" type="mandatory"></field>
+					<field name="tbx_streetName" value="wait-1:" type="mandatory"></field>
+					<field name="tbx_buildingclli" value="wait-1:TESTYYYY" type="mandatory"></field>
+				</container>
+				<container name="Devicedata">
+					<field name="tbx_DeviceCLLI" value="wait-1:TESTYYYY" type="mandatory"></field>
+					<field name="tbx_Devicedesignator" value="wait-1:01A" type="mandatory"></field>
+					<field name="tbx_relayID" value="DateTime:NID.Q1" type="mandatory"></field>
+					<field name="ddl_IsDiversed" value="wait-1:No" type="mandatory"></field>
+					<field name="ddl_functional_status" value="wait-1:Not Specified" type="mandatory"></field>
+               		<field name="ddl_Affiliate_Owner" value="wait-1:LOCAL" type="mandatory"></field>
+					<field name="tbx_monitoring_type" value="wait-2:Role" type="mandatory"></field>
+				</container>
+				<container name="TCS1452 - Subscriber">
+					<field name="tbx_subcriber_name_window" value="wait-1:TEST - JANET" type="mandatory"></field>
+				</container>
+				</container>
+				<container name="Topologydata">
+					<field name="ddl_TopologyType" value="wait-1:PON Network"
+						type="mandatory"></field>
+					<field name="tbx_Topologyname" value="wait-1:CANTW7920" type="mandatory"></field>
+				</container>
+			</container>
 		</container>
 		<container name="OVCreateTopologyPage">
 		<container name="TopologyData">
@@ -1035,7 +1074,7 @@
                		<field name="tbx_NPa" value="wait-1:337" type="mandatory"></field>
                		<field name="tbx_NXX" value="wait-1:432" type="mandatory"></field>
             	</container>
-            	<container name="TC55214 Primary Address">            		
+            	<container name="Primary Address-TC55214">            		
 					<field name="tbx_LocationFullName" value="wait-1:Location L1 Auto" type="mandatory"></field>   		
                		<field name="tbx_AddressPrefix" value="wait-1:Sr" type="mandatory"></field>
 					<field name="tbx_Address_Number" value="wait-1:1432" type="mandatory"></field>
@@ -1049,7 +1088,7 @@
 					<field name="tbx_Zip_1" value="wait-1:84116" type="mandatory"></field>               		
                		<field name="tbx_Zip_2" value="wait-1:5648" type="mandatory"></field>
             	</container>
-            	<container name="TC55214 Secondary Address">            		
+            	<container name="Secondary Address-TC55214">            		
                		<field name="ddl_location_Designator_1" value="wait-2:APARTMENT" type="mandatory"></field>
                		<field name="tbx_location_Designator_1_value" value="wait-1:1" type="mandatory"></field>
 					<field name="ddl_location_Designator_2" value="wait-2:PENTHOUSE" type="mandatory"></field>
@@ -1138,6 +1177,29 @@
                		<field name="tbx_NPa" value="wait-1:209" type="mandatory"></field>
                		<field name="tbx_NXX" value="wait-1:208" type="mandatory"></field>
         	</container>
-        </container>            
+        </container> 
+          <container name="OVCreateCircuitPage">
+        	<container name="Ethernet Bearer-TC54069">
+					<field name="tbx_name" value="wait-2:103/TES/ATLTAGAX654/ATLTAGAX521" type="mandatory"></field>
+               		<field name="tbx_alias1" value="wait-1:AUTO - SCRIPT" type="mandatory"></field>
+               		<field name="tbx_alias2" value="wait-1:SCRIPT - 1" type="mandatory"></field>
+					<field name="tbx_Bandwidth" value="wait-1:2500" type="mandatory"></field>
+               		<field name="tbx_note" value="wait-1:AUTOMATION SCRIPT" type="mandatory"></field> 
+					<field name="ddl_Circuit_Service_Type" value="wait-2:NMI" type="mandatory"></field>
+               		<field name="tbx_TSP" value="wait-1:1" type="mandatory"></field>
+               		<field name="ddl_Trasport_Type" value="wait-1:Fiber" type="mandatory"></field>
+					<field name="tbx_Provisioned_Bandwidth" value="wait-1:2500" type="mandatory"></field>
+					<field name="ddl_Functional_Status" value="wait-2:Not Specified" type="mandatory"></field>
+               		<field name="ddl_Is_Diverse" value="wait-1:No" type="mandatory"></field>
+			</container>
+			<container name="TC54069 Start Device">
+					<field name="tbx_Building_CLLi" value="wait-2:ATLTAGAX" type="mandatory"></field>
+               		<field name="tbx_Device_CLLi" value="wait-2:ATLTAGAX654" type="mandatory"></field>
+			</container>
+			<container name="TC54069 End Device">
+					<field name="tbx_Building_CLLi" value="wait-2:ATLTAGAX" type="mandatory"></field>
+               		<field name="tbx_Device_CLLi" value="wait-2:ATLTAGAX521" type="mandatory"></field>
+			</container>
+        </container>           
    	</container>					 
 </container>
