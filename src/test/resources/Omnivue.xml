@@ -475,6 +475,7 @@
                        
        	    <container name="OVServiceDetailsPage">
             <field name="tbx_editDeviceName" value="77/L1XX/785391//ABCD" type="mandatory"></field>
+            </container>
             <container name="TC55318-main">
         	<field name="tbx_name" value="DateTime:12307.44" type="mandatory"></field>
          	<field name="tbx_subsname" value="wait-1:T-MOBILE" type="mandatory"></field>
@@ -482,7 +483,7 @@
          	<field name="ddl_supportipversion" value="wait-1:V6" type="mandatory"></field>
          	<field name="tbx_vlan" value="wait-1:1230" type="mandatory"></field>
         	</container>
-	        </container>
+	        
         <container name="OVModServiceDetailsPage">
                <field name="tbx_editDeviceName" value="77/L1XX/785391//CTQF" type="mandatory"></field>
         </container>
@@ -750,8 +751,7 @@
 					<field name="ddl_IsDiversed" value="wait-1:No" type="mandatory"></field>
 				</container>
 				<container name="Topologydata">
-					<field name="ddl_TopologyType" value="wait-1:PON Network"
-						type="mandatory"></field>
+					<field name="ddl_TopologyType" value="wait-1:PON Network" type="mandatory"></field>
 					<field name="tbx_Topologyname" value="wait-1:CANTW7920" type="mandatory"></field>
 				</container>
 			</container>
@@ -775,8 +775,7 @@
 					<field name="ddl_FiberProvisioning" value="wait-1:Infrastructure Build" type="mandatory"></field>
 				</container>
 				<container name="Topologydata">
-					<field name="ddl_TopologyType" value="wait-1:PON Network"
-						type="mandatory"></field>
+					<field name="ddl_TopologyType" value="wait-1:PON Network" type="mandatory"></field>
 					<field name="tbx_Topologyname" value="wait-1:CANTW7920" type="mandatory"></field>
 				</container>
 			</container>
@@ -869,12 +868,11 @@
 				</container>
 				</container>
 				<container name="Topologydata">
-					<field name="ddl_TopologyType" value="wait-1:PON Network"
-						type="mandatory"></field>
+					<field name="ddl_TopologyType" value="wait-1:PON Network" type="mandatory"></field>
 					<field name="tbx_Topologyname" value="wait-1:CANTW7920" type="mandatory"></field>
 				</container>
 			</container>
-		</container>
+		
 		<container name="OVCreateTopologyPage">
 		<container name="TopologyData">
 			<field name="tbx_fullName" value="wait-1:Topology8" type="mandatory"></field>
@@ -1002,7 +1000,7 @@
 					<field name="ddl_mco" value="wait-2:MPLSMNETHQ" type="mandatory"></field>
 			</container>
         </container>
-   	    <container name="OVCreateLocationPage">
+   	<container name="OVCreateLocationPage">
    	    		<container name="Address Range-TC54061 data">            		
                		<field name="tbx_low_street" value="wait-1:150" type="mandatory"></field>
                		<field name="tbx_high_street" value="wait-1:160" type="mandatory"></field>
@@ -1141,7 +1139,7 @@
                		<field name="tbx_NXX" value="wait-1:432" type="mandatory"></field>
             	</container>
         </container> 
-           <container name="OVLocationDetailsPage">
+    <container name="OVLocationDetailsPage">
         		<container name="TC54068-Address Range">
         			<field name="tbx_InvLocSrch_LowStreet" value="wait-1:700" type="mandatory"></field>
         			<field name="tbx_InvLocSrch_HighStreet" value="wait-1:800" type="mandatory"></field>
@@ -1178,7 +1176,7 @@
                		<field name="tbx_NXX" value="wait-1:208" type="mandatory"></field>
         	</container>
         </container> 
-          <container name="OVCreateCircuitPage">
+    <container name="OVCreateCircuitPage">
         	<container name="Ethernet Bearer-TC54069">
 					<field name="tbx_name" value="wait-2:103/TES/ATLTAGAX654/ATLTAGAX521" type="mandatory"></field>
                		<field name="tbx_alias1" value="wait-1:AUTO - SCRIPT" type="mandatory"></field>
@@ -1201,5 +1199,6 @@
                		<field name="tbx_Device_CLLi" value="wait-2:ATLTAGAX521" type="mandatory"></field>
 			</container>
         </container>           
-   	</container>					 
+   	</container>	
+   					 
 </container>
