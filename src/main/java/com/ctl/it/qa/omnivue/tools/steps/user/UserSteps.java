@@ -4,6 +4,7 @@ import java.awt.Robot;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import org.junit.Assert;
 import org.openqa.selenium.JavascriptExecutor;
@@ -78,6 +79,7 @@ public class UserSteps extends OmniVueSteps  {
 		loginPage.EnterDetails(userType);
 		loginPage.clickLogin();
 		WaitForPageToLoad(100);
+		
 	}
 
 	public void is_in_omnivue_login_page(String url) {
@@ -479,8 +481,12 @@ public class UserSteps extends OmniVueSteps  {
 	@Step
 	public void click_searchBtn(String button) throws InterruptedException {
 		actvtnpage.click_searchbtn(button);
-		//System.out.println("Second stage");
-		Thread.sleep(10000);
+		/* loginPage.waitFor(actvtnpage.btn_view);
+		 loginPage.waitForTextToAppear(actvtnpage.btn_view, 100)*/
+		 //System.out.println("Second stage");
+		//Thread.sleep(10000);
+		
+		waitForElement(actvtnpage.btn_view);
 	}
 	
 	
@@ -2187,6 +2193,13 @@ public class UserSteps extends OmniVueSteps  {
 					fillMandatoryFields(devcreatepage,get_data_for_page(devcreatepage).getContainer(field));
 				}
 				
+				@Step
+				public WebElement waitForElement(WebElement elementToBeLoaded) {
+				    WebDriverWait wait = new WebDriverWait(loginPage.getDriver(),150);				   
+				    WebElement element = wait.until(ExpectedConditions.visibilityOf(elementToBeLoaded));
+					
+				    return element;
+				}				
 				
 					
 }
