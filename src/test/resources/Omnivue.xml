@@ -25,6 +25,10 @@
 				<container name="Userrole">
 					<field name="username_tbx" value="ldtst23" type="mandatory" />
 					<field name="pwd_tbx" value="Qwest2010" type="mandatory" />
+				</container>
+				<container name="DSPUser">
+					<field name="username_tbx" value="DSPTEST2" type="mandatory" />
+					<field name="pwd_tbx" value="Ctli@123" type="mandatory" />
 				</container>				
 			</container>				
 		</container>				
@@ -307,7 +311,6 @@
 				<field name="ddl_devType" value="wait-2:GENERIC OPTICAL SPLITTER" type="mandatory"></field>				
 			</container>
 			
-						<!-- Container: TC55531_EnabledFields is Added By Dolly -->
 			<container name="TC55531_EnabledFields">
 				<container name="SubscriberName">
 					<field name="ddl_SubscriberType" value="wait-1:INTERNAL"
@@ -317,7 +320,7 @@
 				</container>
 			</container>
 
-	<!-- Container: TC55534_EnabledFields is Added By Dolly -->
+	
 	<container name="TC55534_EnabledFields">
 		<container name="SubscriberName">
 			<field name="ddl_SubscriberType" value="wait-1:INTERNAL" type="mandatory"></field>
@@ -329,22 +332,12 @@
 		</container>
 	</container>
 			
-						<!-- Container: Network Information is Added By Dolly -->
 			<container name="Network Information">
 				<field name="tbx_serialNumber" value="wait-1:123" type="mandatory"></field>
 				<field name="tbx_vendorPartNumber" value="wait-1:111" type="mandatory"></field>
 			</container>
 			
-<!--        		<container name="TC55531_EnabledFields">
-			<container name="SubscriberName">
-					<field name="ddl_SubscriberType" value="wait-1:INTERNAL" type="mandatory"></field>
-					<field name="tbx_Subscribername" value="wait-1:'D' SANDS MOTEL" type="mandatory"></field>
-			</container>
-			<container name="Network Information">
-				<field name="tbx_serialNumber" value="wait-1:123" type="mandatory"></field>
-				<field name="tbx_vendorPartNumber" value="wait-1:111" type="mandatory"></field>
-			</container>
-		</container> -->
+
        		<container name="TC55484-CD">
                <field name="ddl_FunctionalStatus" value="wait-1:Faulty" type="mandatory"></field>
                <field name="tbx_networkElementNode" value="wait-1:123" type="mandatory"></field>
@@ -381,7 +374,6 @@
                <field name="tbx_topologyNameForSearch" value="wait-1:OCALA" type="mandatory"></field>
           	 </container>
           	 
-          	 <!-- 								MOHIT						 -->
           	 
           	 
           	  <container name ="TC55671-Search">
@@ -418,12 +410,8 @@
           	     <field name="ddl_searchType" value="wait-1:Inventory" type="mandatory"></field>
           	     <field name="ddl_invntryType" value="wait-1:Topology" type="mandatory"></field>
               	 <field name="ddl_topologyTypeForSearch" value="wait-1:PON Collector" type="mandatory"></field>
-              	 </container>
-              	 
+              	 </container> 	 
           	 
-          	 <!--				 				END								 -->
-          	 
-          	 <!-- 								ANKIT							 -->
    
  			<container name="TC39243">
             <field name="ddl_servicetype" value="wait-1:MEF ENNI" type="mandatory"></field>
@@ -453,13 +441,21 @@
              <field name="ddl_invntryType" value="wait-1:Service" type="mandatory"></field>
              <field name="tbx_serviceName" value="wait-1:RNTNWA0103W.3134" type="mandatory"></field>
              <field name="ddl_servicetypeForSearch" value="wait-1:DSL OVC" type="mandatory"></field>
-          	 </container>
-             
-           
-           <!-- 								END								 -->
+          	 </container>          
+           		<container name="GPON Autoform Task">
+               		<field name="ddl_searchType" value="wait-1:Tasks" type="mandatory"></field>
+              		<field name="ddl_task_type" value="wait-2:All Tasks" type="mandatory"></field>
+               		<field name="tbx_task_csofid" value="wait-1:695926" type="mandatory"></field>
+         		</container> 
+         			<container name="GPON Fallout Task">
+               		<field name="ddl_searchType" value="wait-1:Tasks" type="mandatory"></field>
+              		<field name="ddl_task_type" value="wait-2:All Tasks" type="mandatory"></field>
+               		<field name="tbx_task_csofid" value="wait-1:572522" type="mandatory"></field>
+         		</container>    
+         		
         	</container>
+        	  <!-- 								END	of OVActivationpage						 -->
         	
-        	<!--  						ANKIT								-->
         	
         	<container name="OvSearchLinkdetailspage">
             <container name="Tc39223searchlink">

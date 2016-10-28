@@ -143,13 +143,16 @@ public class OVActivationPage extends OmniVuePage {
 		@FindBy(xpath=".//*[@ng-click='searchInventory();']")
 		public WebElementFacade btn_inventorysearch;
 		
+		@FindBy(xpath=".//*[@ng-click='searchInventory();' and @ng-hide='isForWidgetCreate']")
+		public WebElementFacade btn_invservicesearch;
+		
 		@FindBy(xpath=".//*[@ng-click='searchOrders();']")
 		public WebElementFacade btn_ordersearch;
 		
 		@FindBy(xpath=".//*[@ng-click='searchNetwork();']")
 		public WebElementFacade btn_networksearch;
 		
-		@FindBy(xpath=".//*[@ng-click='searchTask();']")
+		@FindBy(xpath=".//*[text()='Search' and @ng-click='searchTask();']")
 		public WebElementFacade btn_tasksearch;
 		
 		//End of Search button
@@ -650,6 +653,105 @@ public class OVActivationPage extends OmniVuePage {
 
 	@FindBy(id = "MONITORING_TYPE")
 	public WebElementFacade tbx_monitoring_type ;
+	
+	
+	@FindBy(xpath= ".//*[text()='Go to page:']")
+	public WebElementFacade lbl_Searchresultpage ;
+	
+	@FindBy(xpath= ".//*[@title='Refresh']")
+	public WebElementFacade btn_refreshSearchresultpage ;
+	//Search Tab----Task path
+	
+	@FindBy(id = "defaultTaskSelected")
+	public WebElementFacade ddl_task_type ;
+	
+	@FindBy(id = "CSOF Order ID ")
+	public WebElementFacade tbx_task_csofid ;
+
+
+	@FindBy(id="topologyType")
+	public WebElementFacade ddl_topologyTypeForSearch;
+	
+	@FindBy(id="topologyName")
+	public WebElementFacade tbx_topologyNameForSearch;
+	
+	@FindBy(id="contactFirstName") 
+	public WebElementFacade	 tbx_contactFirstName;
+	
+	@FindBy(id="contactType")
+	public WebElementFacade ddl_contactType;
+	
+	@FindBy(xpath="//span[span[label[text()='Name']]]/following-sibling::span//input")
+	public WebElementFacade tbx_TDName;
+	
+	@FindBy(xpath="//span[span[label[text()='Full Name']]]/following-sibling::span//input")
+	public WebElementFacade tbx_TDFullName;
+	
+	@FindBy(xpath="//span[span[label[text()='Alias1']]]/following-sibling::span//input")
+	public WebElementFacade tbx_TDAlias1;
+	
+	@FindBy(xpath="//span[span[label[text()='Topology Role']]]/following-sibling::span//select")
+	public WebElementFacade ddl_TDTopologyRole;
+	
+	@FindBy(xpath="//span[span[label[text()='Topology Technology Type']]]/following-sibling::span//select")
+	public WebElementFacade ddl_TDTopologyTechnologyType;
+	
+	@FindBy(xpath="//span[span[label[text()='Topology Notes']]]/following-sibling::span//textarea")
+	public WebElementFacade tbx_TDTopologyNotes;
+
+
+	@FindBy(xpath="//span[span[label[text()='Name']]]/following-sibling::span//label")
+	public WebElementFacade tag_TDName;
+	
+	@FindBy(xpath="//span[span[label[text()='Full Name']]]/following-sibling::span//label")
+	public WebElementFacade tag_TDFullName;
+	
+	@FindBy(xpath="//span[span[label[text()='Alias1']]]/following-sibling::span//label")
+	public WebElementFacade tag_TDAlias1;
+	
+	@FindBy(xpath="//span[span[label[text()='Topology Role']]]/following-sibling::span//label")
+	public WebElementFacade tag_TDTopologyRole;
+	
+	@FindBy(xpath="//span[span[label[text()='Topology Technology Type']]]/following-sibling::span//label")
+	public WebElementFacade tag_TDTopologyTechnologyType;
+	
+	@FindBy(xpath="//span[span[label[text()='Topology Notes']]]/following-sibling::span//label")
+	public WebElementFacade tag_TDTopologyNotes;
+	
+
+
+	@FindBy(xpath="//div[div[div[div[div[span[text()='Device CLLI']]]]]]/following-sibling::div[1]/div/div[1]/div[4]/div")
+	public WebElementFacade tag_deviceCLLIl;
+	
+	@FindBy(xpath="//thead[tr[th[span[text()='Device Name']]]]/following-sibling::tbody/tr[1]//a")
+	public WebElementFacade tag_deviceName;
+	
+	
+
+	
+	@FindBy(xpath="(//select[@id='typeSelection'])[2]")
+	public WebElementFacade ddl_servicetype; 
+
+
+	@FindBy(xpath="//label[text()='City %']/..//input")
+	public WebElementFacade tbx_city;
+	
+	@FindBy(xpath="//label[text()='State']/..//select")
+	public WebElementFacade ddl_stateArizona; 
+
+	@FindBy(xpath="(//label[contains(text(),'Link Type')])[1]/..//select")
+	public WebElementFacade ddl_LinkType; 
+	@FindBy(xpath="//label[text()='Name %']/../input")
+	public WebElementFacade tbx_searchname; 
+
+	@FindBy(xpath="//select[@id='servicetype']")
+	public WebElementFacade  ddl_servicetypeForSearch;
+	
+	@FindBy(id = "networkType")
+	public WebElementFacade ddl_EquipmentBuildType;
+	
+	@FindBy(xpath = ".//*[@ng-click='initiateNetworkCreation();']")
+	public WebElementFacade btn_createNetwork;
 			
 	@Override
 	public WebElementFacade getUniqueElementInPage() {
@@ -691,6 +793,9 @@ public class OVActivationPage extends OmniVuePage {
 		}
 		else if(search_button.equals("Task")){
 			btn_tasksearch.click();						
+			
+		}else if(search_button.equals("Service")){
+			btn_invservicesearch.click();						
 			
 		}
 		
@@ -776,11 +881,15 @@ public class OVActivationPage extends OmniVuePage {
 			WebDriverWait wait = new WebDriverWait(getDriver(),30);
 			wait.until(ExpectedConditions.elementToBeClickable(btn_createdevice));
 			btn_createdevice.click();
-		}
-		else if(create_button.equals("ServiveCreate")){
+		}  else if(create_button.equals("ServiveCreate")){
 			WebDriverWait waita = new WebDriverWait(getDriver(),30);
 			 waita.until(ExpectedConditions.elementToBeClickable(btn_createservice));
 			 btn_createservice.click();	
+		} else if (create_button.equals("NetworkBuild")) {
+			WebDriverWait waitb = new WebDriverWait(getDriver(), 30);
+			waitb.until(ExpectedConditions
+					.elementToBeClickable(btn_createNetwork));
+			btn_createNetwork.click();
 		}
 		
 		
@@ -862,90 +971,7 @@ public class OVActivationPage extends OmniVuePage {
 	}
 
 	
-	//---------------------------------------------------MOHIT---------------------------------------------------
-	
-	//TC55673
-		@FindBy(id="topologyType")
-		public WebElementFacade ddl_topologyTypeForSearch;
-		
-		@FindBy(id="topologyName")
-		public WebElementFacade tbx_topologyNameForSearch;
-		
-		@FindBy(id="contactFirstName") 
-		public WebElementFacade	 tbx_contactFirstName;
-		
-		@FindBy(id="contactType")
-		public WebElementFacade ddl_contactType;
-		
-//TC54963 
-//Edit Topology Details
-		@FindBy(xpath="//span[span[label[text()='Name']]]/following-sibling::span//input")
-		public WebElementFacade tbx_TDName;
-		
-		@FindBy(xpath="//span[span[label[text()='Full Name']]]/following-sibling::span//input")
-		public WebElementFacade tbx_TDFullName;
-		
-		@FindBy(xpath="//span[span[label[text()='Alias1']]]/following-sibling::span//input")
-		public WebElementFacade tbx_TDAlias1;
-		
-		@FindBy(xpath="//span[span[label[text()='Topology Role']]]/following-sibling::span//select")
-		public WebElementFacade ddl_TDTopologyRole;
-		
-		@FindBy(xpath="//span[span[label[text()='Topology Technology Type']]]/following-sibling::span//select")
-		public WebElementFacade ddl_TDTopologyTechnologyType;
-		
-		@FindBy(xpath="//span[span[label[text()='Topology Notes']]]/following-sibling::span//textarea")
-		public WebElementFacade tbx_TDTopologyNotes;
-	
-//after click on save button
-		@FindBy(xpath="//span[span[label[text()='Name']]]/following-sibling::span//label")
-		public WebElementFacade tag_TDName;
-		
-		@FindBy(xpath="//span[span[label[text()='Full Name']]]/following-sibling::span//label")
-		public WebElementFacade tag_TDFullName;
-		
-		@FindBy(xpath="//span[span[label[text()='Alias1']]]/following-sibling::span//label")
-		public WebElementFacade tag_TDAlias1;
-		
-		@FindBy(xpath="//span[span[label[text()='Topology Role']]]/following-sibling::span//label")
-		public WebElementFacade tag_TDTopologyRole;
-		
-		@FindBy(xpath="//span[span[label[text()='Topology Technology Type']]]/following-sibling::span//label")
-		public WebElementFacade tag_TDTopologyTechnologyType;
-		
-		@FindBy(xpath="//span[span[label[text()='Topology Notes']]]/following-sibling::span//label")
-		public WebElementFacade tag_TDTopologyNotes;
-		
 
-//TC65965
-		@FindBy(xpath="//div[div[div[div[div[span[text()='Device CLLI']]]]]]/following-sibling::div[1]/div/div[1]/div[4]/div")
-		public WebElementFacade tag_deviceCLLIl;
-		
-		@FindBy(xpath="//thead[tr[th[span[text()='Device Name']]]]/following-sibling::tbody/tr[1]//a")
-		public WebElementFacade tag_deviceName;
-		
-		
-//-------------------------------------------Ankit-----------------------------------------------
-	//TC39243	
-		@FindBy(xpath="(//select[@id='typeSelection'])[2]")
-		public WebElementFacade ddl_servicetype; 
-
-	//TC39225	
-		@FindBy(xpath="//label[text()='City %']/..//input")
-		public WebElementFacade tbx_city;
-		
-		@FindBy(xpath="//label[text()='State']/..//select")
-		public WebElementFacade ddl_stateArizona; 
-
-	//TC39223
-		@FindBy(xpath="(//label[contains(text(),'Link Type')])[1]/..//select")
-		public WebElementFacade ddl_LinkType; 
-		@FindBy(xpath="//label[text()='Name %']/../input")
-		public WebElementFacade tbx_searchname; 
-		
-	//TC55318
-		@FindBy(xpath="//select[@id='servicetype']")
-		public WebElementFacade  ddl_servicetypeForSearch;
 				 
 
 }

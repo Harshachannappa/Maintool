@@ -2,6 +2,8 @@ package com.ctl.it.qa.omnivue.tools.steps.user;
 
 import java.awt.Robot;
 import java.awt.event.KeyEvent;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -23,6 +25,7 @@ import com.ctl.it.qa.omnivue.tools.pages.common.OVContactSearchDetailsPage;
 import com.ctl.it.qa.omnivue.tools.pages.common.OVCreateCircuitPage;
 import com.ctl.it.qa.omnivue.tools.pages.common.OVCreateDevicePage;
 import com.ctl.it.qa.omnivue.tools.pages.common.OVCreateLocationPage;
+import com.ctl.it.qa.omnivue.tools.pages.common.OVCreateNetworkbuild;
 import com.ctl.it.qa.omnivue.tools.pages.common.OVCreateServicePage;
 import com.ctl.it.qa.omnivue.tools.pages.common.OVCreateTopologyPage;
 import com.ctl.it.qa.omnivue.tools.pages.common.OVCreateTransportPathPage;
@@ -35,6 +38,7 @@ import com.ctl.it.qa.omnivue.tools.pages.common.OVModServiceDetailsPage;
 import com.ctl.it.qa.omnivue.tools.pages.common.OVOrderPage;
 import com.ctl.it.qa.omnivue.tools.pages.common.OVSearchDevicePage;
 import com.ctl.it.qa.omnivue.tools.pages.common.OVServiceDetailsPage;
+import com.ctl.it.qa.omnivue.tools.pages.common.OVTaskrenderingpage;
 import com.ctl.it.qa.omnivue.tools.pages.common.OvSearchLinkdetailspage;
 import com.ctl.it.qa.omnivue.tools.steps.OmniVueSteps;
 import com.ctl.it.qa.staf.xml.reader.IntDataContainer;
@@ -61,7 +65,7 @@ public class UserSteps extends OmniVueSteps  {
 	OVCreateServicePage servicecreatepage ;
 	OVCreateLocationPage createlocationpage;
 	OVCreateCircuitPage createcircuitpage ;
-	 
+	OVTaskrenderingpage taskpage;
 	
 	//OVCreateLocationPage locpage;
 	
@@ -71,6 +75,8 @@ public class UserSteps extends OmniVueSteps  {
 	 
 	 OVCreateTransportPathPage transportPathPage;
 	 OVCreateTopologyPage createTopologyPage;
+	 OVCreateNetworkbuild craetenetwrkbuild;
+	 
 	
 
 	@Step
@@ -299,6 +305,10 @@ public class UserSteps extends OmniVueSteps  {
 			
 			
 			
+		} else if(str2.equals("Alternate Equipment Build")){
+			
+			craetenetwrkbuild.validatealtequitbuildcreateformvalidation();
+			
 		}
 	}
 	
@@ -486,7 +496,9 @@ public class UserSteps extends OmniVueSteps  {
 		 //System.out.println("Second stage");
 		//Thread.sleep(10000);
 		
-		waitForElement(actvtnpage.btn_view);
+		waitForElement(actvtnpage.lbl_Searchresultpage);
+		
+		System.out.println("Done with searching");
 	}
 	
 	
@@ -2199,7 +2211,56 @@ public class UserSteps extends OmniVueSteps  {
 				    WebElement element = wait.until(ExpectedConditions.visibilityOf(elementToBeLoaded));
 					
 				    return element;
-				}				
+				}	
+				
+				@Step
+				public void validate_taskresult(String taskcheck) {
+					if(taskcheck.equals("DSP Task")){
+						if(taskpage.btn_DSPview_task.isDisplayed() && taskpage.btn_DSPedit_task.isDisplayed()){
+							System.out.println("View & Edit Autoform Task are seen");
+						} else throw new Error("fail");
+						
+					} else if(taskcheck.equals("Fallout Task")){
+						if(taskpage.btn_view_task.isDisplayed() && taskpage.btn_edit_task.isDisplayed()){
+							System.out.println("View & Edit Autoform Task are seen");
+						} else throw new Error("fail");
+						
+					} 
+				}
+				
+				@Step
+				public void click_viewtask(String taskselect){
+					if(taskselect.equals("View DSP Task")){
+						waitForElement(taskpage.ViewDSPtaskclick());
+					} else if(taskselect.equals("View Fallout Task")){
+						waitForElement(taskpage.fallouttaskclick());
+					} else if(taskselect.equals("Edit DSP Task")){
+						waitForElement(taskpage.EditDSPtaskclick());
+					}
+					
+					
+					System.out.println("Clicked on the View Task");
+					
+				}
+				
+				@Step
+				public void Taskviewpage(String viewtask){
+					taskpage.taskviewvalidation(viewtask);
+					System.out.println("Done with View Validations");
+				}
+				
+				@Step
+				public void validateapisectiontask(String viewtask) {
+					
+					taskpage.APIsectionvalidation(viewtask);
+				}
+				
+				@Step
+				public void select_network_tab_values(String type1,String type2){
+					if(type1.equals("Alt Equipment Build Type")){
+						actvtnpage.ddl_EquipmentBuildType.selectByValue(type2);
+					}
+				}
 				
 					
 }
